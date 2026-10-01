@@ -1,9 +1,116 @@
 <anvil-form layout="Minimal_Theme_1.Layouts.BaseLayout">
-    <anvil-block slot="actions"></anvil-block>
+    <anvil-block slot="actions">
+        <a href="#generator">Generator</a>
+        <a href="#plans">Plans</a>
+        <a href="#benefits">Benefits</a>
+    </anvil-block>
     <anvil-block slot="content">
-        <anvil-component type="ColumnPanel" name="column_panel_1" prop:role="card" designer:placeholder="Add components here"></anvil-component>
+        <div class="vrokal-page">
+            <section class="vrokal-hero">
+                <div class="vrokal-hero-copy">
+                    <p class="vrokal-eyebrow">IDEAS INTO STARTING CODE</p>
+                    <h2>Build your next app with Vrokal.</h2>
+                    <p class="vrokal-hero-text">Describe an idea, choose a language, and get an editable starter scaffold with your project brief included.</p>
+                    <a class="vrokal-cta" href="#generator">Try the code generator <span aria-hidden="true">↓</span></a>
+                </div>
+                <div class="vrokal-hero-note">
+                    <span class="vrokal-note-icon" aria-hidden="true">&lt;/&gt;</span>
+                    <p>Start with a clear foundation.</p>
+                    <span>Python · JavaScript · HTML/CSS · Java · C#</span>
+                </div>
+            </section>
+
+            <section id="generator" class="vrokal-section vrokal-generator">
+                <div class="vrokal-section-heading">
+                    <p class="vrokal-eyebrow">CODE GENERATOR</p>
+                    <h2>Make a useful first draft</h2>
+                    <p>Choose a language and add a short brief to include in your starter code.</p>
+                </div>
+                <div class="vrokal-generator-grid">
+                    <div class="vrokal-generator-form">
+                        <p class="vrokal-field-label">Programming language</p>
+                        <anvil-component type="DropDown" name="language_dropdown"></anvil-component>
+                        <p class="vrokal-field-label">What are you building?</p>
+                        <anvil-component type="TextArea" name="project_prompt" prop:placeholder="For example: a personal budget tracker with monthly charts"></anvil-component>
+                        <anvil-component type="Button" name="generate_button" prop:text="Generate starter code"></anvil-component>
+                        <div class="vrokal-generator-status">
+                            <anvil-component type="Label" name="generator_status" prop:text="Your project idea will be included as a note in the starter code."></anvil-component>
+                        </div>
+                    </div>
+                    <div class="vrokal-output-wrap">
+                        <div class="vrokal-output-heading">
+                            <p class="vrokal-field-label">Your starter code</p>
+                            <span>Editable output</span>
+                        </div>
+                        <anvil-component type="TextArea" name="code_output" prop:role="code-output" prop:placeholder="Your starter code will appear here"></anvil-component>
+                        <p class="vrokal-output-note">Your brief is included as a note; add project-specific behavior in the TODOs and review the code before use.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="plans" class="vrokal-section vrokal-plans">
+                <div class="vrokal-section-heading">
+                    <p class="vrokal-eyebrow">PRICING</p>
+                    <h2>Choose a code plan</h2>
+                    <p>Plans are priced in Canadian dollars. Contact the founder to arrange payment.</p>
+                </div>
+                <div class="vrokal-plan-grid">
+                    <article class="vrokal-plan-card">
+                        <p class="vrokal-plan-label">QUICK CODE</p>
+                        <h3>CAD $25</h3>
+                        <p>Fast code delivery for a focused app or website request.</p>
+                        <ul>
+                            <li>Priority turnaround</li>
+                            <li>A clear starter for your project</li>
+                            <li>Useful for focused features and prototypes</li>
+                        </ul>
+                        <a href="tel:+919773652479" class="vrokal-plan-link">Contact to arrange payment</a>
+                    </article>
+                    <article class="vrokal-plan-card vrokal-plan-featured">
+                        <p class="vrokal-plan-label">ADVANCED CODE</p>
+                        <h3>CAD $50</h3>
+                        <p>Fast, advanced code delivery with an accuracy-focused review.</p>
+                        <ul>
+                            <li>Priority turnaround</li>
+                            <li>More detailed implementation</li>
+                            <li>Extra review for clarity and accuracy</li>
+                        </ul>
+                        <a href="tel:+919773652479" class="vrokal-plan-link">Contact to arrange payment</a>
+                    </article>
+                </div>
+                <p class="vrokal-payment-note">Payment contact: <a href="tel:+919773652479">+91 9773652479</a>. Automatic checkout and transfers are not configured on this site.</p>
+            </section>
+
+            <section id="benefits" class="vrokal-section vrokal-benefits">
+                <div class="vrokal-section-heading">
+                    <p class="vrokal-eyebrow">WHY VROKAL</p>
+                    <h2>A practical starting point for your next idea</h2>
+                </div>
+                <div class="vrokal-benefit-grid">
+                    <article class="vrokal-benefit-card">
+                        <span>01</span>
+                        <h3>Get moving sooner</h3>
+                        <p>Skip the blank file and begin with a simple structure you can extend.</p>
+                    </article>
+                    <article class="vrokal-benefit-card">
+                        <span>02</span>
+                        <h3>Explore common languages</h3>
+                        <p>Start with templates for Python, JavaScript, HTML/CSS, Java, and C#.</p>
+                    </article>
+                    <article class="vrokal-benefit-card">
+                        <span>03</span>
+                        <h3>Prototype many ideas</h3>
+                        <p>Use it to outline websites, small apps, tools, and early project concepts.</p>
+                    </article>
+                </div>
+                <footer class="vrokal-footer">
+                    <span>Vrokal</span>
+                    <span>Founded by Jatassya Singh</span>
+                </footer>
+            </section>
+        </div>
     </anvil-block>
     <anvil-block slot="title">
-        <anvil-component type="Label" name="label_1" prop:role="h1" prop:text="Home"></anvil-component>
+        <anvil-component type="Label" name="brand_label" prop:role="h1" prop:text="Vrokal"></anvil-component>
     </anvil-block>
 </anvil-form>

@@ -259,6 +259,284 @@ textarea.anvil-text-area:disabled,
   cursor: not-allowed;
 }
 
+.vrokal-page {
+  color: var(--blank-text);
+}
+
+.vrokal-page section {
+  scroll-margin-top: 24px;
+}
+
+.vrokal-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(240px, 0.8fr);
+  align-items: center;
+  gap: clamp(28px, 6vw, 72px);
+  padding: clamp(32px, 7vw, 76px) clamp(24px, 6vw, 68px);
+  border-radius: 18px;
+  background: linear-gradient(130deg, var(--blank-surface-muted), var(--blank-bg) 72%);
+}
+
+.vrokal-eyebrow {
+  margin: 0 0 12px;
+  color: var(--blank-primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.vrokal-hero h2,
+.vrokal-section-heading h2 {
+  margin: 0;
+  color: var(--blank-text);
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.vrokal-hero-text {
+  max-width: 610px;
+  margin: 20px 0 26px;
+  color: var(--blank-muted);
+  font-size: 18px;
+}
+
+.vrokal-cta,
+.vrokal-plan-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 7px;
+  background: var(--blank-primary);
+  color: #fff;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.vrokal-cta:hover,
+.vrokal-cta:focus,
+.vrokal-plan-link:hover,
+.vrokal-plan-link:focus {
+  background: var(--blank-primary-dark);
+  color: #fff;
+}
+
+.vrokal-hero-note {
+  padding: 28px;
+  border: 1px solid var(--blank-border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 16px 44px rgba(21, 51, 62, 0.08);
+}
+
+.vrokal-note-icon {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--blank-surface-muted);
+  color: var(--blank-primary-dark);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.vrokal-hero-note p {
+  margin: 22px 0 6px;
+  color: var(--blank-text);
+  font-size: 20px;
+  font-weight: 750;
+}
+
+.vrokal-hero-note span:last-child,
+.vrokal-output-heading span {
+  color: var(--blank-muted);
+  font-size: 13px;
+}
+
+.vrokal-section {
+  padding: clamp(54px, 8vw, 88px) 0 0;
+}
+
+.vrokal-section-heading {
+  max-width: 700px;
+  margin-bottom: 28px;
+}
+
+.vrokal-section-heading h2 {
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+.vrokal-section-heading > p:last-child {
+  margin: 12px 0 0;
+  color: var(--blank-muted);
+}
+
+.vrokal-generator-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.vrokal-generator-form,
+.vrokal-output-wrap,
+.vrokal-plan-card,
+.vrokal-benefit-card {
+  padding: 24px;
+  border: 1px solid var(--blank-border);
+  border-radius: 12px;
+  background: var(--blank-surface);
+  box-shadow: 0 10px 30px rgba(21, 51, 62, 0.04);
+}
+
+.vrokal-field-label {
+  margin: 0 0 8px;
+  color: var(--blank-text);
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.vrokal-generator-form .anvil-dropdown,
+.vrokal-generator-form .anvil-text-area,
+.vrokal-output-wrap .anvil-text-area {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.vrokal-generator-form textarea.anvil-text-area {
+  min-height: 128px;
+}
+
+textarea.anvil-role-code-output {
+  min-height: 330px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.55;
+  white-space: pre;
+}
+
+.vrokal-generator-form .anvil-button > button {
+  width: 100%;
+}
+
+.vrokal-generator-status {
+  min-height: 40px;
+  margin-top: 12px;
+  color: var(--blank-muted);
+  font-size: 13px;
+}
+
+.vrokal-output-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.vrokal-output-note,
+.vrokal-payment-note {
+  color: var(--blank-muted);
+  font-size: 13px;
+}
+
+.vrokal-plan-grid,
+.vrokal-benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.vrokal-plan-card h3 {
+  margin: 4px 0 8px;
+  color: var(--blank-text);
+  font-size: 34px;
+}
+
+.vrokal-plan-card > p:not(.vrokal-plan-label) {
+  min-height: 48px;
+  color: var(--blank-muted);
+}
+
+.vrokal-plan-label {
+  margin: 0;
+  color: var(--blank-primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.vrokal-plan-card ul {
+  display: grid;
+  gap: 8px;
+  min-height: 92px;
+  margin: 18px 0 24px;
+  padding-left: 20px;
+  color: var(--blank-text);
+}
+
+.vrokal-plan-featured {
+  border-color: var(--blank-primary);
+  box-shadow: 0 14px 38px rgba(23, 107, 135, 0.1);
+}
+
+.vrokal-payment-note {
+  margin-top: 18px;
+}
+
+.vrokal-benefit-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.vrokal-benefit-card > span {
+  color: var(--blank-primary);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.vrokal-benefit-card h3 {
+  margin: 18px 0 8px;
+  color: var(--blank-text);
+  font-size: 18px;
+}
+
+.vrokal-benefit-card p {
+  margin: 0;
+  color: var(--blank-muted);
+  font-size: 14px;
+}
+
+.vrokal-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 48px;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--blank-border);
+  color: var(--blank-muted);
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .vrokal-hero,
+  .vrokal-generator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vrokal-plan-grid,
+  .vrokal-benefit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vrokal-footer {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 760px) {
   .page-header {
     display: block;
