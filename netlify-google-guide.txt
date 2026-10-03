@@ -1,0 +1,6 @@
+Netlify and Google Search Guide for Vrokal
+
+1. Open the site's Netlify URL (usually ending in netlify.app) to view the deployed site.
+2. Publishing on Netlify does not make the site appear in Google immediately.
+3. To ask Google to index the site, add it to Google Search Console, verify ownership, and request indexing. It can take time, and indexing is not guaranteed.
+4. Vrokal was built as an Anvil app. If Anvil project files were uploaded directly to Netlify, Anvil-specific features may not work there. Open the Netlify URL to check what it shows.
