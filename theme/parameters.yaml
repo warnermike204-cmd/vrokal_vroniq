@@ -12,6 +12,13 @@ color_scheme:
   - {color: '#f9fbfc', name: Control Background Hover}
   - {color: '#eef2f6', name: Control Disabled}
   - {color: '#eef5f7', name: Surface Muted}
+  - {color: '#ee795f', name: Coral}
+  - {color: '#7359cf', name: Violet}
+  - {color: '#e8b84f', name: Gold}
+  - {color: '#78b7a4', name: Mint}
+  - {color: '#f1ecff', name: Lavender}
+  - {color: '#fff0e8', name: Peach}
+  - {color: '#fff9e8', name: Gold Wash}
 roles:
 - components: [Button]
   name: secondary-button

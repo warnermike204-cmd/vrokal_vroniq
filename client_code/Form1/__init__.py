@@ -1,5 +1,6 @@
 from ._anvil_designer import Form1Template
 from anvil import *
+import anvil.server
 
 
 class Form1(Form1Template):
@@ -14,224 +15,80 @@ class Form1(Form1Template):
       "Website", "Mobile app concept", "Online store", "Portfolio", "Blog",
       "Dashboard", "REST API", "Automation tool", "Chatbot", "Learning project", "Game",
     ]
-    self.project_type_dropdown.selected_value = "Website"
-    self.code_output.text = "Your starter code will appear here."
+    self.project_type_dropdown.selected_value = "Game"
+    self.code_output.text = ""
+    self.conversation_history = []
+    self.chat_messages = [{
+      "speaker": "Vrokal AI",
+      "content": "Hi! Ask me a question, talk through an idea, or tell me what code you want to build. For a game, you can describe the controls, goal, enemies, and scoring.",
+    }]
+    self.chat_history_panel.items = self.chat_messages
+    self.generator_status.text = "Ask a question or describe something you want to make."
 
   @handle("generate_button", "click")
   def generate_button_click(self, **event_args):
     language = self.language_dropdown.selected_value or "Python"
-    project_type = self.project_type_dropdown.selected_value or "Website"
-    project = " ".join((self.project_prompt.text or "").split())[:240]
+    project_type = self.project_type_dropdown.selected_value or "Game"
+    project = (self.project_prompt.text or "").strip()
 
     if not project:
-      self.generator_status.text = "Describe your app or website idea to generate a starter."
+      self.generator_status.text = "Type a message or a question for Vrokal AI."
       return
 
-    code = self._make_starter(language, project_type, project)
-    self.code_output.text = code
-    self.generator_status.text = "{} starter created for your {} idea. Add your project features in the TODOs.".format(language, project_type.lower())
+    if len(project) > 4000:
+      self.generator_status.text = "Please keep each message under 4,000 characters."
+      return
 
-  def _make_starter(self, language, project_type, project):
-    if language == "HTML + CSS":
-      safe_project = project.replace("--", "—")
-      safe_type = project_type.replace("--", "—")
-      return "\n".join([
-        "<!doctype html>",
-        '<html lang="en">',
-        "<head>",
-        '  <meta charset="utf-8">',
-        '  <meta name="viewport" content="width=device-width, initial-scale=1">',
-        "  <title>Vrokal starter</title>",
-        "  <style>",
-        "    body { font-family: system-ui, sans-serif; margin: 0; padding: 3rem; background: #f4f8fa; color: #172b36; }",
-        "    main { max-width: 720px; margin: auto; padding: 2rem; border-radius: 1rem; background: white; }",
-        "    a { color: #176b87; }",
-        "  </style>",
-        "</head>",
-        "<body>",
-        "  <main>",
-        "    <!-- Project type: " + safe_type + " -->",
-        "    <!-- Project idea: " + safe_project + " -->",
-        "    <p>Vrokal project starter</p>",
-        "    <h1>Bring your idea to life</h1>",
-        "    <p>Replace this text with the core experience for your website.</p>",
-        '    <a href="#start">Get started</a>',
-        "  </main>",
-        "</body>",
-        "</html>",
+    self.generate_button.enabled = False
+    self.generate_button.text = "Vrokal AI is thinking…"
+    self.generator_status.text = "Vrokal AI is thinking…"
+    try:
+      result = anvil.server.call(
+        "generate_project_code",
+        language,
+        project_type,
+        project,
+        self.conversation_history[-8:],
+        (self.code_output.text or "").strip(),
+      )
+
+      if not result.get("ok"):
+        message = result.get("message", "The request could not be completed. Please try again.")
+        self.chat_messages.append({"speaker": "Vrokal AI", "content": message})
+        self.chat_history_panel.items = self.chat_messages
+        self.generator_status.text = message
+        return
+
+      assistant_message = result["assistant_message"]
+      if result["code"]:
+        self.code_output.text = result["code"]
+      self.conversation_history.extend([
+        {"role": "user", "content": project},
+        {"role": "assistant", "content": assistant_message},
       ])
+      self.conversation_history = self.conversation_history[-8:]
+      self.chat_messages.extend([
+        {"speaker": "You", "content": project},
+        {"speaker": "Vrokal AI", "content": assistant_message},
+      ])
+      self.chat_history_panel.items = self.chat_messages
+      self.project_prompt.text = ""
+      if result["code"]:
+        self.generator_status.text = "Your code is ready. Ask Vrokal AI a question or request another change."
+      else:
+        self.generator_status.text = "Vrokal AI replied. You can keep chatting or ask it to write code."
+    finally:
+      self.generate_button.enabled = True
+      self.generate_button.text = "Ask Vrokal AI"
 
-    comment = {
-      "Python": "#", "Ruby": "#", "Bash": "#", "SQL": "--",
-    }.get(language, "//")
-    if language == "PHP":
-      safe_project = project.replace("?>", "? >")
-      header = [
-        "<?php",
-        "// Vrokal PHP starter",
-        "// Project type: " + project_type,
-        "// Project idea: " + safe_project,
-        "",
-      ]
-    elif language == "Bash":
-      header = [
-        "#!/usr/bin/env bash",
-        "# Vrokal Bash starter",
-        "# Project type: " + project_type,
-        "# Project idea: " + project,
-        "",
-      ]
-    else:
-      header = [
-        comment + " Vrokal " + language + " starter",
-        comment + " Project type: " + project_type,
-        comment + " Project idea: " + project,
-        "",
-      ]
-
-    if language == "Python":
-      body = [
-        "def main():",
-        '    print("Your Vrokal project is ready.")',
-        "    # TODO: implement the main workflow for your project.",
-        "",
-        'if __name__ == "__main__":',
-        "    main()",
-      ]
-
-    elif language == "JavaScript":
-      body = [
-        'const appName = "Vrokal starter";',
-        "",
-        "function main() {",
-        '  console.log(`${appName} is ready.`);',
-        "  // TODO: implement the main workflow for your project.",
-        "}",
-        "",
-        "main();",
-      ]
-
-    elif language == "TypeScript":
-      body = [
-        'const appName: string = "Vrokal starter";',
-        "",
-        "function main(): void {",
-        '  console.log(`${appName} is ready.`);',
-        "  // TODO: implement the main workflow for your project.",
-        "}",
-        "",
-        "main();",
-      ]
-
-    elif language == "Java":
-      body = [
-        "class Main {",
-        "  public static void main(String[] args) {",
-        '    System.out.println("Your Vrokal project is ready.");',
-        "    // TODO: implement the main workflow for your project.",
-        "  }",
-        "}",
-      ]
-
-    elif language == "C#":
-      body = [
-        "using System;",
-        "",
-        "class Program {",
-        "  static void Main() {",
-        '    Console.WriteLine("Your Vrokal project is ready.");',
-        "    // TODO: implement the main workflow for your project.",
-        "  }",
-        "}",
-      ]
-
-    elif language == "C++":
-      body = [
-        "#include <iostream>",
-        "",
-        "int main() {",
-        '  std::cout << "Your Vrokal project is ready." << std::endl;',
-        "  // TODO: implement the main workflow for your project.",
-        "  return 0;",
-        "}",
-      ]
-
-    elif language == "Go":
-      body = [
-        "package main",
-        "",
-        'import "fmt"',
-        "",
-        "func main() {",
-        '  fmt.Println("Your Vrokal project is ready.")',
-        "  // TODO: implement the main workflow for your project.",
-        "}",
-      ]
-
-    elif language == "PHP":
-      body = [
-        "function main(): void {",
-        '    echo "Your Vrokal project is ready." . PHP_EOL;',
-        "    // TODO: implement the main workflow for your project.",
-        "}",
-        "",
-        "main();",
-      ]
-
-    elif language == "Ruby":
-      body = [
-        "def main",
-        '  puts "Your Vrokal project is ready."',
-        "  # TODO: implement the main workflow for your project.",
-        "end",
-        "",
-        "main",
-      ]
-
-    elif language == "SQL":
-      body = [
-        "CREATE TABLE project_items (",
-        "  id INTEGER PRIMARY KEY,",
-        "  name TEXT NOT NULL,",
-        "  created_at TIMESTAMP",
-        ");",
-        "",
-        "-- TODO: adapt the table fields to your project.",
-        "SELECT id, name, created_at FROM project_items;",
-      ]
-
-    elif language == "Bash":
-      body = [
-        "set -euo pipefail",
-        "",
-        "main() {",
-        '  echo "Your Vrokal project is ready."',
-        "  # TODO: implement the main workflow for your project.",
-        "}",
-        "",
-        'main "$@"',
-      ]
-
-    elif language == "Rust":
-      body = [
-        "fn main() {",
-        '    println!("Your Vrokal project is ready.");',
-        "    // TODO: implement the main workflow for your project.",
-        "}",
-      ]
-
-    elif language == "Kotlin":
-      body = [
-        "fun main() {",
-        '    println("Your Vrokal project is ready.")',
-        "    // TODO: implement the main workflow for your project.",
-        "}",
-      ]
-
-    else:  # Swift
-      body = [
-        'print("Your Vrokal project is ready.")',
-        "// TODO: implement the main workflow for your project.",
-      ]
-
-    return "\n".join(header + body)
+  @handle("new_chat_button", "click")
+  def new_chat_button_click(self, **event_args):
+    self.conversation_history = []
+    self.chat_messages = [{
+      "speaker": "Vrokal AI",
+      "content": "Hi! Ask me a question, talk through an idea, or tell me what code you want to build. For a game, you can describe the controls, goal, enemies, and scoring.",
+    }]
+    self.chat_history_panel.items = self.chat_messages
+    self.code_output.text = ""
+    self.project_prompt.text = ""
+    self.generator_status.text = "New chat started. Describe your next idea."

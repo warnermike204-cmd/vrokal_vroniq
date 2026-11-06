@@ -1,5 +1,6 @@
 <anvil-form layout="Minimal_Theme_1.Layouts.BaseLayout">
     <anvil-block slot="actions">
+        <a href="#story">Our story</a>
         <a href="#generator">Generator</a>
         <a href="#projects">Project ideas</a>
         <a href="#process">How it works</a>
@@ -10,23 +11,43 @@
         <div class="vrokal-page">
             <section class="vrokal-hero">
                 <div class="vrokal-hero-copy">
-                    <p class="vrokal-eyebrow">IDEAS INTO STARTING CODE</p>
-                    <h2>Build your next app with Vrokal.</h2>
-                    <p class="vrokal-hero-text">Choose from 15 language and web-format options and 11 project types, then create an editable starter scaffold with your idea included.</p>
-                    <a class="vrokal-cta" href="#generator">Try the code generator <span aria-hidden="true">↓</span></a>
+                    <p class="vrokal-eyebrow">IDEAS INTO WORKING CODE</p>
+                    <h2>Build your next game or app with Vrokal.</h2>
+                    <p class="vrokal-hero-text">Describe a game or app in your own words. Vrokal AI turns the details into tailored code, then helps you improve it through follow-up chat.</p>
+                    <a class="vrokal-cta" href="#generator">Try the AI code generator <span aria-hidden="true">↓</span></a>
                 </div>
                 <div class="vrokal-hero-note">
                     <span class="vrokal-note-icon" aria-hidden="true">&lt;/&gt;</span>
-                    <p>Start with a clear foundation.</p>
-                    <span>15 language and web-format options · 11 project types · editable starters</span>
+                    <p>Every game begins with an idea.</p>
+                    <span>Idea → playable draft → your next change</span>
+                    <div class="vrokal-story-code" aria-hidden="true">
+                        <span><i></i> game = "your idea"</span>
+                        <span><i></i> describe_controls()</span>
+                        <span><i></i> add_next_feature()</span>
+                    </div>
                 </div>
+            </section>
+
+            <section id="story" class="vrokal-section vrokal-story">
+                <div class="vrokal-story-narrative">
+                    <p class="vrokal-eyebrow">THE VROKAL STORY</p>
+                    <h2>From “what if?” to “let’s play.”</h2>
+                    <p>Every game begins with a spark: a character, a challenge, a world, or a mechanic you want to try. Then comes the blank page—and the question of how to turn that idea into something playable.</p>
+                    <p>Vrokal is designed to help with that first stretch. Describe what the player does, choose a language, and get a code draft shaped around your idea. Then keep talking to the AI: add a level, change the controls, tune the score, or take the project in a new direction.</p>
+                    <a class="vrokal-story-link" href="#generator">Start with your idea <span aria-hidden="true">→</span></a>
+                </div>
+                <aside class="vrokal-story-quote">
+                    <span aria-hidden="true">✦</span>
+                    <blockquote>The first draft is where the adventure begins.</blockquote>
+                    <p>Vrokal · A place to start building</p>
+                </aside>
             </section>
 
             <section id="generator" class="vrokal-section vrokal-generator">
                 <div class="vrokal-section-heading">
-                    <p class="vrokal-eyebrow">CODE GENERATOR</p>
-                    <h2>Make a useful first draft</h2>
-                    <p>Pick a language and project type, then add a short brief for your starter code.</p>
+                    <p class="vrokal-eyebrow">VROKAL AI CHAT</p>
+                    <h2>Talk, ask, imagine, build.</h2>
+                    <p>Ask everyday questions, explore an idea, or ask Vrokal AI to write code. Keep chatting to get explanations and improve your project.</p>
                 </div>
                 <div class="vrokal-generator-grid">
                     <div class="vrokal-generator-form">
@@ -34,20 +55,27 @@
                         <anvil-component type="DropDown" name="language_dropdown"></anvil-component>
                         <p class="vrokal-field-label">Project type</p>
                         <anvil-component type="DropDown" name="project_type_dropdown"></anvil-component>
-                        <p class="vrokal-field-label">What are you building?</p>
-                        <anvil-component type="TextArea" name="project_prompt" prop:placeholder="For example: a personal budget tracker with monthly charts, expense categories, and sign-in"></anvil-component>
-                        <anvil-component type="Button" name="generate_button" prop:text="Generate starter code"></anvil-component>
+                        <p class="vrokal-field-label">Your conversation with Vrokal AI</p>
+                        <div class="vrokal-chat-scroll">
+                            <anvil-component type="RepeatingPanel" name="chat_history_panel" prop:item_template="Minimal_Theme_1.Form1.ChatMessage" prop:role="vrokal-chat-history"></anvil-component>
+                        </div>
+                        <p class="vrokal-field-label">Message Vrokal AI</p>
+                        <anvil-component type="TextArea" name="project_prompt" prop:role="chat-prompt" prop:placeholder="Ask anything, or try: Make a Python game where a spaceship dodges asteroids. Then ask: add three lives."></anvil-component>
+                        <div class="vrokal-chat-actions">
+                            <anvil-component type="Button" name="generate_button" prop:text="Ask Vrokal AI"></anvil-component>
+                            <anvil-component type="Button" name="new_chat_button" prop:text="New chat" prop:role="secondary-button"></anvil-component>
+                        </div>
                         <div class="vrokal-generator-status">
-                            <anvil-component type="Label" name="generator_status" prop:text="Your language, project type, and idea will be noted in the generated starter."></anvil-component>
+                            <anvil-component type="Label" name="generator_status" prop:text="Describe your idea and Vrokal AI will write a tailored first version."></anvil-component>
                         </div>
                     </div>
                     <div class="vrokal-output-wrap">
                         <div class="vrokal-output-heading">
-                            <p class="vrokal-field-label">Your starter code</p>
-                            <span>Editable output</span>
+                            <p class="vrokal-field-label">Your code</p>
+                            <span>Appears when you ask for code</span>
                         </div>
-                        <anvil-component type="TextArea" name="code_output" prop:role="code-output" prop:placeholder="Your starter code will appear here"></anvil-component>
-                        <p class="vrokal-output-note">These are language-specific starter templates. Your selections are included as notes; add the app features in the TODOs and review the code before use.</p>
+                        <anvil-component type="TextArea" name="code_output" prop:role="code-output" prop:placeholder="Your AI-generated code will appear here"></anvil-component>
+                        <p class="vrokal-output-note">Ask Vrokal AI to write or change code in your selected language. Review generated code and install any setup requirements before running it.</p>
                     </div>
                 </div>
             </section>
@@ -55,65 +83,29 @@
             <section id="projects" class="vrokal-section">
                 <div class="vrokal-section-heading">
                     <p class="vrokal-eyebrow">PROJECT IDEAS</p>
-                    <h2>What can you start with Vrokal?</h2>
-                    <p>Pick a project type that fits your idea. Use the generated scaffold as a starting point and build the features you need.</p>
+                    <h2>What can you make with Vrokal?</h2>
+                    <p>Describe the experience you want. Vrokal AI can create a tailored first draft and help you refine it one request at a time.</p>
                 </div>
                 <div class="vrokal-usecase-grid">
-                    <article class="vrokal-usecase-card">
-                        <span class="vrokal-card-number">01</span>
-                        <h3>Websites and portfolios</h3>
-                        <p>Start a personal site, portfolio, blog, or landing page.</p>
-                    </article>
-                    <article class="vrokal-usecase-card">
-                        <span class="vrokal-card-number">02</span>
-                        <h3>Online stores</h3>
-                        <p>Outline a product catalogue, shopping flow, or small business site.</p>
-                    </article>
-                    <article class="vrokal-usecase-card">
-                        <span class="vrokal-card-number">03</span>
-                        <h3>Dashboards and trackers</h3>
-                        <p>Plan a budget tracker, reporting view, habit log, or admin dashboard.</p>
-                    </article>
-                    <article class="vrokal-usecase-card">
-                        <span class="vrokal-card-number">04</span>
-                        <h3>APIs and backend tools</h3>
-                        <p>Lay out a small service, data endpoint, or integration idea.</p>
-                    </article>
-                    <article class="vrokal-usecase-card">
-                        <span class="vrokal-card-number">05</span>
-                        <h3>Automation and utilities</h3>
-                        <p>Get a starting structure for scripts, helpers, and routine tasks.</p>
-                    </article>
-                    <article class="vrokal-usecase-card">
-                        <span class="vrokal-card-number">06</span>
-                        <h3>Learning projects and games</h3>
-                        <p>Practice a language with a small game, chatbot, or class project.</p>
-                    </article>
+                    <article class="vrokal-usecase-card"><span class="vrokal-card-number">01</span><h3>Arcade games</h3><p>Describe movement, obstacles, scoring, lives, and how to win or restart.</p></article>
+                    <article class="vrokal-usecase-card"><span class="vrokal-card-number">02</span><h3>Platform games</h3><p>Plan levels, jumping, collectibles, checkpoints, and character controls.</p></article>
+                    <article class="vrokal-usecase-card"><span class="vrokal-card-number">03</span><h3>Puzzle games</h3><p>Turn rules, pieces, hints, and puzzle progression into a code draft.</p></article>
+                    <article class="vrokal-usecase-card"><span class="vrokal-card-number">04</span><h3>Websites and portfolios</h3><p>Start a personal site, portfolio, blog, or landing page.</p></article>
+                    <article class="vrokal-usecase-card"><span class="vrokal-card-number">05</span><h3>Dashboards and trackers</h3><p>Describe a budget tool, reporting view, habit log, or admin dashboard.</p></article>
+                    <article class="vrokal-usecase-card"><span class="vrokal-card-number">06</span><h3>Apps and utilities</h3><p>Build a first draft for a chatbot, script, learning project, or small app.</p></article>
                 </div>
             </section>
 
             <section id="process" class="vrokal-section vrokal-process">
                 <div class="vrokal-section-heading">
                     <p class="vrokal-eyebrow">HOW IT WORKS</p>
-                    <h2>Three steps from idea to starter</h2>
-                    <p>Vrokal keeps the first step simple so you can focus on what you want to build next.</p>
+                    <h2>Three steps from idea to code</h2>
+                    <p>Start with a description, see your code, and keep shaping the project through chat.</p>
                 </div>
                 <div class="vrokal-steps-grid">
-                    <article class="vrokal-step-card">
-                        <span>STEP 1</span>
-                        <h3>Choose your options</h3>
-                        <p>Select a programming language and the type of project you want to start.</p>
-                    </article>
-                    <article class="vrokal-step-card">
-                        <span>STEP 2</span>
-                        <h3>Describe your idea</h3>
-                        <p>Write a short project brief with the main goal or features you have in mind.</p>
-                    </article>
-                    <article class="vrokal-step-card">
-                        <span>STEP 3</span>
-                        <h3>Generate and extend</h3>
-                        <p>Generate an editable starter, then add and test your own project logic.</p>
-                    </article>
+                    <article class="vrokal-step-card"><span>STEP 1</span><h3>Choose your options</h3><p>Select a programming language and the kind of project you want to create.</p></article>
+                    <article class="vrokal-step-card"><span>STEP 2</span><h3>Describe the details</h3><p>Explain the goal, controls, features, and behavior you want in your game or app.</p></article>
+                    <article class="vrokal-step-card"><span>STEP 3</span><h3>Chat and improve</h3><p>Get a code draft, then ask for changes. The latest code stays in the editor.</p></article>
                 </div>
             </section>
 
@@ -121,12 +113,10 @@
                 <div class="vrokal-section-heading">
                     <p class="vrokal-eyebrow">LANGUAGE OPTIONS</p>
                     <h2>Choose a familiar language</h2>
-                    <p>Vrokal includes starter templates for these 15 languages and formats.</p>
+                    <p>Describe your project in plain words and choose from these 15 languages and formats.</p>
                 </div>
                 <div class="vrokal-language-list">
-                    <span>Python</span><span>JavaScript</span><span>TypeScript</span><span>HTML + CSS</span>
-                    <span>Java</span><span>C#</span><span>C++</span><span>Go</span><span>PHP</span>
-                    <span>Ruby</span><span>SQL</span><span>Bash</span><span>Rust</span><span>Kotlin</span><span>Swift</span>
+                    <span>Python</span><span>JavaScript</span><span>TypeScript</span><span>HTML + CSS</span><span>Java</span><span>C#</span><span>C++</span><span>Go</span><span>PHP</span><span>Ruby</span><span>SQL</span><span>Bash</span><span>Rust</span><span>Kotlin</span><span>Swift</span>
                 </div>
             </section>
 
@@ -138,103 +128,50 @@
                 </div>
                 <div class="vrokal-plan-grid">
                     <article class="vrokal-plan-card">
-                        <p class="vrokal-plan-label">QUICK CODE</p>
-                        <h3>CAD $25</h3>
+                        <p class="vrokal-plan-label">QUICK CODE</p><h3>CAD $25</h3>
                         <p>Fast code delivery for a focused app or website request.</p>
-                        <ul>
-                            <li>Priority turnaround</li>
-                            <li>A clear starter for your project</li>
-                            <li>Useful for focused features and prototypes</li>
-                        </ul>
-                        <a href="tel:+919773652479" class="vrokal-plan-link">Contact to arrange payment</a>
+                        <ul><li>Priority turnaround</li><li>A clear starter for your project</li><li>Useful for focused features and prototypes</li></ul>
+                        <a href="#payment-contact" class="vrokal-plan-link">Choose this plan ↓</a>
                     </article>
                     <article class="vrokal-plan-card vrokal-plan-featured">
-                        <p class="vrokal-plan-label">ADVANCED CODE</p>
-                        <h3>CAD $50</h3>
+                        <p class="vrokal-plan-label">ADVANCED CODE</p><h3>CAD $50</h3>
                         <p>Fast, advanced code delivery with an accuracy-focused review.</p>
-                        <ul>
-                            <li>Priority turnaround</li>
-                            <li>More detailed implementation</li>
-                            <li>Extra review for clarity and accuracy</li>
-                        </ul>
-                        <a href="tel:+919773652479" class="vrokal-plan-link">Contact to arrange payment</a>
+                        <ul><li>Priority turnaround</li><li>More detailed implementation</li><li>Extra review for clarity and accuracy</li></ul>
+                        <a href="#payment-contact" class="vrokal-plan-link">Choose this plan ↓</a>
                     </article>
                 </div>
-                <p class="vrokal-payment-note">Payment contact: <a href="tel:+919773652479">+91 9773652479</a>. Automatic checkout and transfers are not configured on this site.</p>
+                <p id="payment-contact" class="vrokal-payment-note">Payment contact: <a href="tel:+919773652479">+91 9773652479</a>. Automatic checkout and transfers are not configured on this site.</p>
             </section>
 
             <section id="benefits" class="vrokal-section vrokal-benefits">
-                <div class="vrokal-section-heading">
-                    <p class="vrokal-eyebrow">WHY VROKAL</p>
-                    <h2>A practical starting point for your next idea</h2>
-                </div>
+                <div class="vrokal-section-heading"><p class="vrokal-eyebrow">WHY VROKAL</p><h2>A practical partner for your next idea</h2></div>
                 <div class="vrokal-benefit-grid">
-                    <article class="vrokal-benefit-card">
-                        <span>01</span>
-                        <h3>Get moving sooner</h3>
-                        <p>Skip the blank file and begin with a simple structure you can extend.</p>
-                    </article>
-                    <article class="vrokal-benefit-card">
-                        <span>02</span>
-                        <h3>Explore common languages</h3>
-                        <p>Choose among 15 language and web-format starters, including Python, JavaScript, HTML/CSS, Java, and C#.</p>
-                    </article>
-                    <article class="vrokal-benefit-card">
-                        <span>03</span>
-                        <h3>Prototype many ideas</h3>
-                        <p>Use it to outline websites, small apps, tools, and early project concepts.</p>
-                    </article>
-                    <article class="vrokal-benefit-card">
-                        <span>04</span>
-                        <h3>Keep your idea close</h3>
-                        <p>Your project type and brief are included in the starter so you can refer back while building.</p>
-                    </article>
+                    <article class="vrokal-benefit-card"><span>01</span><h3>Get a tailored start</h3><p>Describe your idea and get code shaped around the features you asked for.</p></article>
+                    <article class="vrokal-benefit-card"><span>02</span><h3>Keep refining in chat</h3><p>Ask for changes such as new controls, levels, score rules, or app features.</p></article>
+                    <article class="vrokal-benefit-card"><span>03</span><h3>Choose your language</h3><p>Use one of 15 language and web-format options for your project draft.</p></article>
+                    <article class="vrokal-benefit-card"><span>04</span><h3>Keep the code editable</h3><p>Review and adjust the generated code in the page before using it in your project.</p></article>
                 </div>
             </section>
 
             <section class="vrokal-section vrokal-faq">
-                <div class="vrokal-section-heading">
-                    <p class="vrokal-eyebrow">QUESTIONS</p>
-                    <h2>Frequently asked questions</h2>
-                </div>
+                <div class="vrokal-section-heading"><p class="vrokal-eyebrow">QUESTIONS</p><h2>Frequently asked questions</h2></div>
                 <div class="vrokal-faq-grid">
-                    <article class="vrokal-faq-card">
-                        <h3>Does Vrokal generate a complete finished app?</h3>
-                        <p>The built-in generator provides editable starter templates. You add and test the project-specific features yourself.</p>
-                    </article>
-                    <article class="vrokal-faq-card">
-                        <h3>Which languages can I choose?</h3>
-                        <p>You can choose Python, JavaScript, TypeScript, HTML/CSS, Java, C#, C++, Go, PHP, Ruby, SQL, Bash, Rust, Kotlin, or Swift.</p>
-                    </article>
-                    <article class="vrokal-faq-card">
-                        <h3>How do the plans work?</h3>
-                        <p>The page lists two service plans. Contact the founder to discuss a request and payment arrangements.</p>
-                    </article>
-                    <article class="vrokal-faq-card">
-                        <h3>Can I use the starter for my own idea?</h3>
-                        <p>Yes. The output is editable starter code; review it and adapt it to your project's needs.</p>
-                    </article>
+                    <article class="vrokal-faq-card"><h3>Can Vrokal make game-specific code?</h3><p>Yes. Describe the gameplay, controls, scoring, and other details. The AI uses that brief to make a tailored code draft.</p></article>
+                    <article class="vrokal-faq-card"><h3>Can I ask for changes afterward?</h3><p>Yes. Continue the same chat with requests such as “add a pause button” or “make the enemies move faster.”</p></article>
+                    <article class="vrokal-faq-card"><h3>Does Vrokal run or test the code?</h3><p>No. The page generates and edits code. Review it, install any required tools, and run it in the environment for your selected language.</p></article>
+                    <article class="vrokal-faq-card"><h3>Which languages can I choose?</h3><p>Python, JavaScript, TypeScript, HTML/CSS, Java, C#, C++, Go, PHP, Ruby, SQL, Bash, Rust, Kotlin, and Swift.</p></article>
                 </div>
             </section>
 
             <section id="founder" class="vrokal-section vrokal-founder-section">
                 <div class="vrokal-founder-panel">
                     <div class="vrokal-founder-monogram" aria-hidden="true">JS</div>
-                    <div>
-                        <p class="vrokal-eyebrow">MEET THE FOUNDER</p>
-                        <h2>Jatassya Singh</h2>
-                        <p>Founder of Vrokal. Vrokal is built to help people turn a project idea into a clear starting point for coding.</p>
-                    </div>
+                    <div><p class="vrokal-eyebrow">MEET THE FOUNDER</p><h2>Jatassya Singh</h2><p>Founder of Vrokal. Vrokal is built to help people turn a project idea into a clear starting point for coding.</p></div>
                 </div>
             </section>
 
-            <footer class="vrokal-footer">
-                <span>Vrokal · Founded by Jatassya Singh</span>
-                <a href="#generator">Back to generator ↑</a>
-            </footer>
+            <footer class="vrokal-footer"><span>Vrokal · Founded by Jatassya Singh</span><a href="#generator">Back to generator ↑</a></footer>
         </div>
     </anvil-block>
-    <anvil-block slot="title">
-        <anvil-component type="Label" name="brand_label" prop:role="h1" prop:text="Vrokal"></anvil-component>
-    </anvil-block>
+    <anvil-block slot="title"><anvil-component type="Label" name="brand_label" prop:role="h1" prop:text="Vrokal"></anvil-component></anvil-block>
 </anvil-form>

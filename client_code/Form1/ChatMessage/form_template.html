@@ -1,0 +1,6 @@
+<anvil-form container="ColumnPanel">
+  <div class="vrokal-chat-message">
+    <anvil-component type="Label" name="speaker_label" prop:role="chat-speaker" bind:text="self.item['speaker']"></anvil-component>
+    <anvil-component type="Label" name="message_label" prop:role="chat-message-body" bind:text="self.item['content']"></anvil-component>
+  </div>
+</anvil-form>

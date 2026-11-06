@@ -5,8 +5,16 @@ runtime_options:
   client_version: '3'
   server_spec: {base: python310-minimal}
   version: 3
+secrets:
+  OPENAI_API_KEY:
+    type: secret
+    value:
+      RR5KL3CQPGJBIMXI: {? '' : t1tTaNltyUYacHYNOd5zy/NH7uI4umX6huufsR4d6O4TQvOxMjINVi/W8C3LW86iLBr1biUtbLiWVZp2ll+ywVVcwfb/f4KLLHUPqNkk7bSM7CgM5h3Vn4fLHZzarBO+Fae2efeE3Btc02X0fliSrXWXKQBZoDYGhKUf9SGG8/PGBeXu/9NwyE/Kx48gCwx9oHFYDnQ0yrYdV7e6GBa0hXnZyyxVZ3D2/EciawQQQD7bKyqxKpLTxU9+iEAIph1n3hJQSGuPiVy2JWY0mb+S8TIi/5taSF8kIH/DLeg+QZuM/iopikFJGpbKEO9nizyRopoK3VPlOjNH38YAQeRVmRf8Yhot09OIUfzlOhFVxAVSQo+mughohqVEqV8HtD7nSeiTwEaAkLW9q6MCBwVc4sO6kA==}
 services:
 - client_config: {enable_v2: true}
   server_config: {}
   source: /runtime/services/tables.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/anvil/secrets.yml
 startup: {module: Form1, type: form}
