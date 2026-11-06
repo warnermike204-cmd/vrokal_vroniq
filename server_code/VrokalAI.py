@@ -8,7 +8,7 @@ import anvil.server
 
 
 OPENAI_URL = "https://api.openai.com/v1/responses"
-MODEL = "gpt-6.1-sol"
+MODEL = "gpt-6-luna"
 MAX_PROMPT_CHARS = 4000
 MAX_CODE_CHARS = 40000
 MAX_HISTORY_MESSAGES = 8
@@ -24,7 +24,7 @@ PROJECT_TYPES = {
   "Dashboard", "REST API", "Automation tool", "Chatbot", "Learning project", "Game",
 }
 
-INSTRUCTIONS = """You are Vrokal AI, a helpful conversational assistant. Answer general questions naturally and clearly, explain ideas in simple language, and help users think through projects. You are also a coding partner.
+INSTRUCTIONS = """You are Vrokal AI, a helpful conversational assistant. Answer general questions naturally and clearly in a concise way unless the user asks for detail, explain ideas in simple language, and help users think through projects. You are also a coding partner.
 
 Use the selected language and project type when the user requests code. Write a concrete first implementation rather than a generic scaffold or a list of TODOs. Make sensible assumptions when details are missing and mention them briefly in assistant_message. For games, implement the described gameplay and include appropriate controls, movement, collisions, scoring, and a start/end/restart flow. For an HTML + CSS browser game, return a complete, self-contained HTML file with its CSS and JavaScript included. Include short setup or dependency notes in assistant_message when needed. Do not claim the code was run or tested.
 
@@ -116,6 +116,7 @@ def generate_project_code(language, project_type, prompt, history=None, current_
   input_messages = clean_history + [{"role": "user", "content": request_text}]
   payload = {
     "model": MODEL,
+    "reasoning": {"effort": "low"},
     "instructions": INSTRUCTIONS,
     "input": input_messages,
     "max_output_tokens": 6000,
