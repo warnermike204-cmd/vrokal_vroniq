@@ -24,11 +24,9 @@ PROJECT_TYPES = {
   "Dashboard", "REST API", "Automation tool", "Chatbot", "Learning project", "Game",
 }
 
-INSTRUCTIONS = """You are Vrokal AI, a helpful conversational assistant. Answer general questions naturally and clearly in a concise way unless the user asks for detail, explain ideas in simple language, and help users think through projects. You are also a coding partner.
+INSTRUCTIONS = """You are Vrokal AI, a code generator. Treat each user prompt as a request to create or revise software using the selected language and project type. Put the actual source code in the code field; never answer a coding request with explanation alone. If details are missing, make sensible assumptions and build a small, complete version instead of asking questions. Keep the implementation focused and avoid optional features or long comments. For successful code generation, leave assistant_message empty so the app displays the code without extra chat text.
 
-Use the selected language and project type when the user requests code. Write a concrete first implementation rather than a generic scaffold or a list of TODOs. Make sensible assumptions when details are missing and mention them briefly in assistant_message. For games, implement the described gameplay and include appropriate controls, movement, collisions, scoring, and a start/end/restart flow. For an HTML + CSS browser game, return a complete, self-contained HTML file with its CSS and JavaScript included. Include short setup or dependency notes in assistant_message when needed. Do not claim the code was run or tested.
-
-For ordinary questions or conversation, answer in assistant_message and return an empty string for code so the existing editor content is preserved. When the user asks to create or change code, return the full code in code, not a patch. Use the latest code supplied in the request as the starting point for code changes. Never invent code just to fill the code field. Do not claim to browse the web or take actions unless a tool actually did that."""
+For one-file projects, return the complete source. For multi-file projects, include every filename and the complete source for each file. For HTML + CSS browser projects, return a complete self-contained HTML file with CSS and JavaScript. Never invent libraries. When revising, use the latest code supplied in the request. Never execute code or claim it was run, tested, or guaranteed to work."""
 
 OUTPUT_SCHEMA = {
   "type": "object",
@@ -116,10 +114,10 @@ def generate_project_code(language, project_type, prompt, history=None, current_
   input_messages = clean_history + [{"role": "user", "content": request_text}]
   payload = {
     "model": MODEL,
-    "reasoning": {"effort": "low"},
+    "reasoning": {"effort": "none"},
     "instructions": INSTRUCTIONS,
     "input": input_messages,
-    "max_output_tokens": 6000,
+    "max_output_tokens": 4000,
     "store": False,
     "text": {
       "format": {
@@ -159,7 +157,7 @@ def generate_project_code(language, project_type, prompt, history=None, current_
     return _failure("The AI service returned an unreadable response. Please try again.")
 
   if response_data.get("status") != "completed":
-    return _failure("The code response was interrupted. Please try a shorter description.")
+    return _failure("This request needs more code than fits in one quick reply. Try a smaller first version or ask for one feature at a time.")
 
   output_text = _collect_output_text(response_data)
   if not output_text:
@@ -175,5 +173,7 @@ def generate_project_code(language, project_type, prompt, history=None, current_
   code = result.get("code")
   if not isinstance(assistant_message, str) or not isinstance(code, str):
     return _failure("Vrokal AI returned an incomplete result. Please try again.")
+  if not code.strip():
+    return _failure("Vrokal AI did not produce code. Describe the app, website, game, or feature you want built, then try again.")
 
   return {"ok": True, "assistant_message": assistant_message, "code": code}
