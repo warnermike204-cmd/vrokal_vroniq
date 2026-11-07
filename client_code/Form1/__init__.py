@@ -50,7 +50,7 @@ class Form1(Form1Template):
         language,
         project_type,
         project,
-        self.conversation_history[-8:],
+        self.conversation_history[-4:],
         (self.code_output.text or "").strip(),
       )
 
@@ -63,7 +63,7 @@ class Form1(Form1Template):
 
       self.code_output.text = result["code"]
       self.conversation_history.append({"role": "user", "content": project})
-      self.conversation_history = self.conversation_history[-8:]
+      self.conversation_history = self.conversation_history[-4:]
       self.chat_messages.append({"speaker": "You", "content": project})
       self.chat_history_panel.items = self.chat_messages
       self.project_prompt.text = ""

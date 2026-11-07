@@ -11,7 +11,7 @@ OPENAI_URL = "https://api.openai.com/v1/responses"
 MODEL = "gpt-6-luna"
 MAX_PROMPT_CHARS = 4000
 MAX_CODE_CHARS = 40000
-MAX_HISTORY_MESSAGES = 8
+MAX_HISTORY_MESSAGES = 4
 MAX_HISTORY_MESSAGE_CHARS = 4000
 MAX_DAILY_REQUESTS = 12
 
@@ -117,7 +117,7 @@ def generate_project_code(language, project_type, prompt, history=None, current_
     "reasoning": {"effort": "none"},
     "instructions": INSTRUCTIONS,
     "input": input_messages,
-    "max_output_tokens": 4000,
+    "max_output_tokens": 3000,
     "store": False,
     "text": {
       "format": {
