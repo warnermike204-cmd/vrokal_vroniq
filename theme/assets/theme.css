@@ -18,6 +18,8 @@
   --vrokal-lavender: %color:Lavender%;
   --vrokal-peach: %color:Peach%;
   --vrokal-gold-wash: %color:Gold Wash%;
+  --vrokal-code-bg: %color:Code Background%;
+  --vrokal-code-text: %color:Code Text%;
   --anvil-banner-height: %anvil-banner-height%;
 }
 
@@ -38,6 +40,11 @@ body {
   font-family: Inter, "Avenir Next", Aptos, "Segoe UI", ui-sans-serif, system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.5;
+}
+
+body,
+.vrokal-page {
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
 }
 
 .page-shell {
@@ -277,7 +284,7 @@ textarea.anvil-text-area:disabled,
 
 .vrokal-page {
   color: var(--blank-text);
-  font-family: Inter, "Avenir Next", Aptos, "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
 }
 
 .vrokal-page section {
@@ -321,7 +328,7 @@ textarea.anvil-text-area:disabled,
 .vrokal-hero h2,
 .vrokal-section-heading h2,
 .vrokal-founder-panel h2 {
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
   font-weight: 600;
 }
 
@@ -479,7 +486,7 @@ textarea.anvil-text-area:disabled,
   max-width: 620px;
   margin: 0;
   color: var(--blank-text);
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
   font-size: clamp(30px, 4.5vw, 46px);
   font-weight: 600;
   line-height: 1.12;
@@ -519,7 +526,7 @@ textarea.anvil-text-area:disabled,
 
 .vrokal-story-quote blockquote {
   margin: 15px 0;
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
   font-size: 26px;
   line-height: 1.25;
 }
@@ -608,6 +615,192 @@ textarea.anvil-role-code-output {
 
 .vrokal-generator-form .anvil-button > button {
   width: 100%;
+}
+
+.vrokal-wizard-progress {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 26px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(115, 89, 207, 0.16);
+}
+
+.vrokal-wizard-step {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--blank-muted);
+  font-size: 12px;
+  font-weight: 700;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.vrokal-wizard-step-number {
+  display: inline-grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  border: 1px solid rgba(115, 89, 207, 0.28);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--blank-muted);
+  font-size: 11px;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.vrokal-wizard-step.is-active {
+  color: var(--blank-primary-dark);
+  transform: translateY(-1px);
+}
+
+.vrokal-wizard-step.is-active .vrokal-wizard-step-number,
+.vrokal-wizard-step.is-complete .vrokal-wizard-step-number {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--blank-primary), var(--vrokal-violet));
+  color: #fff;
+  box-shadow: 0 5px 14px rgba(115, 89, 207, 0.24);
+}
+
+.vrokal-wizard-slides {
+  position: relative;
+  min-height: 258px;
+}
+
+.vrokal-wizard-slide {
+  display: none;
+}
+
+.vrokal-wizard-slide.is-active,
+.vrokal-wizard-slide.is-exiting-forward,
+.vrokal-wizard-slide.is-exiting-back {
+  display: block;
+}
+
+.vrokal-wizard-slide.is-entering-forward {
+  animation: vrokal-wizard-enter-forward 280ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+
+.vrokal-wizard-slide.is-entering-back {
+  animation: vrokal-wizard-enter-back 280ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+
+.vrokal-wizard-slide.is-exiting-forward,
+.vrokal-wizard-slide.is-exiting-back {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  animation-duration: 260ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  animation-fill-mode: both;
+}
+
+.vrokal-wizard-slide.is-exiting-forward {
+  animation-name: vrokal-wizard-exit-forward;
+}
+
+.vrokal-wizard-slide.is-exiting-back {
+  animation-name: vrokal-wizard-exit-back;
+}
+
+.vrokal-wizard-kicker {
+  margin: 0 0 8px;
+  color: var(--blank-primary);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.vrokal-wizard-slide h3 {
+  margin: 0;
+  color: var(--blank-text);
+  font-size: clamp(21px, 3vw, 27px);
+  line-height: 1.2;
+}
+
+.vrokal-wizard-description {
+  max-width: 52ch;
+  margin: 9px 0 22px;
+  color: var(--blank-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.vrokal-wizard-tip {
+  margin-top: 4px;
+  padding: 12px 14px;
+  border: 1px solid rgba(115, 89, 207, 0.14);
+  border-radius: 12px;
+  background: linear-gradient(105deg, rgba(232, 221, 255, 0.78), rgba(255, 240, 232, 0.74));
+  color: var(--blank-primary-dark);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.vrokal-wizard-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.vrokal-wizard-navigation .anvil-button > button {
+  width: auto;
+  min-width: 120px;
+}
+
+.vrokal-generator-form .vrokal-chat-actions .anvil-button > button {
+  width: auto;
+}
+
+.vrokal-wizard-back-wrap.is-hidden,
+.vrokal-wizard-next-wrap.is-hidden {
+  display: none;
+}
+
+@keyframes vrokal-wizard-enter-forward {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes vrokal-wizard-enter-back {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes vrokal-wizard-exit-forward {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+}
+
+@keyframes vrokal-wizard-exit-back {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(18px);
+  }
 }
 
 .vrokal-generator-status {
@@ -703,7 +896,7 @@ textarea.anvil-role-code-output {
 .vrokal-contact-card h3 {
   margin: 14px 0 8px;
   color: var(--blank-text);
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
   font-size: 24px;
 }
 
@@ -872,15 +1065,16 @@ textarea.anvil-role-code-output {
 }
 
 .vrokal-founder-panel {
-  display: grid;
-  grid-template-columns: 84px minmax(0, 1fr);
-  align-items: center;
-  gap: 24px;
+  display: block;
   padding: clamp(24px, 5vw, 48px);
   border: 0;
   border-radius: 16px;
   background: linear-gradient(120deg, var(--vrokal-violet), #6048b8);
   box-shadow: 0 24px 60px rgba(44, 36, 94, 0.2);
+}
+
+.vrokal-founder-copy {
+  max-width: 760px;
 }
 
 .vrokal-founder-monogram {
@@ -901,10 +1095,11 @@ textarea.anvil-role-code-output {
   font-size: clamp(28px, 4vw, 40px);
 }
 
-.vrokal-founder-panel p:last-child {
-  max-width: 700px;
+.vrokal-founder-panel p:not(.vrokal-eyebrow) {
+  max-width: 70ch;
   margin: 10px 0 0;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.7;
 }
 
 .vrokal-founder-panel .vrokal-eyebrow {
@@ -947,16 +1142,27 @@ textarea.anvil-role-code-output {
     grid-template-columns: 1fr;
   }
 
+  .vrokal-wizard-progress {
+    gap: 7px;
+  }
+
+  .vrokal-wizard-step {
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .vrokal-wizard-step-number {
+    width: 26px;
+    height: 26px;
+    flex-basis: 26px;
+  }
+
   .vrokal-plan-grid,
   .vrokal-contact-grid,
   .vrokal-benefit-grid,
   .vrokal-usecase-grid,
   .vrokal-steps-grid,
   .vrokal-faq-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .vrokal-founder-panel {
     grid-template-columns: 1fr;
   }
 
@@ -982,7 +1188,7 @@ textarea.anvil-role-code-output {
 
 body,
 body * {
-  cursor: url("_/theme/vrokal-cursor.svg") 16 1, auto !important;
+  cursor: url("_/theme/vrokal-cursor.svg") 4 3, auto !important;
 }
 
 a,
@@ -990,7 +1196,7 @@ button,
 select,
 [role="button"],
 .anvil-button > button {
-  cursor: url("_/theme/vrokal-cursor.svg") 16 1, pointer !important;
+  cursor: pointer !important;
 }
 
 input.anvil-text-box,
@@ -1052,6 +1258,484 @@ textarea.anvil-text-area,
 
 .anvil-role-chat-prompt textarea.anvil-text-area {
   min-height: 150px;
+}
+
+.vrokal-language-guide-link {
+  margin: 16px 0 0;
+  font-weight: 750;
+}
+
+.vrokal-language-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.vrokal-language-quick-card,
+.vrokal-language-card {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--blank-border);
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(76, 29, 149, 0.08);
+}
+
+.vrokal-language-quick-card:nth-child(1) {
+  border-top: 4px solid var(--vrokal-violet);
+  background: linear-gradient(145deg, var(--vrokal-lavender), #fff 90%);
+}
+
+.vrokal-language-quick-card:nth-child(2) {
+  border-top: 4px solid var(--vrokal-mint);
+  background: linear-gradient(145deg, #e2f7ee, #fff 90%);
+}
+
+.vrokal-language-quick-card:nth-child(3) {
+  border-top: 4px solid var(--vrokal-coral);
+  background: linear-gradient(145deg, var(--vrokal-peach), #fff 90%);
+}
+
+.vrokal-language-quick-card > span,
+.vrokal-language-badge {
+  display: inline-block;
+  margin: 0 0 10px;
+  color: var(--blank-primary-dark);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+.vrokal-language-quick-card h3,
+.vrokal-language-detail-heading h3,
+.vrokal-language-card h3,
+.vrokal-language-popularity h3 {
+  margin: 0 0 10px;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 21px;
+  line-height: 1.25;
+}
+
+.vrokal-language-quick-card p:last-child,
+.vrokal-language-card > p:not(.vrokal-language-badge) {
+  color: var(--blank-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.vrokal-language-popularity {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(190px, 0.7fr);
+  align-items: center;
+  gap: 30px;
+  margin: 26px 0 54px;
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  background: linear-gradient(120deg, var(--blank-primary-dark), var(--vrokal-violet) 68%, #8c4bc0);
+  box-shadow: 0 20px 48px rgba(76, 29, 149, 0.22);
+  color: #fff;
+}
+
+.vrokal-language-popularity-label {
+  margin: 0 0 8px;
+  color: #ffe08b;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.vrokal-language-popularity h3 {
+  font-size: clamp(23px, 3vw, 30px);
+}
+
+.vrokal-language-popularity > div:first-child > p:not(.vrokal-language-popularity-label) {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.vrokal-language-source-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-top: 18px;
+}
+
+.vrokal-language-source-links a {
+  color: #ffe08b;
+  font-weight: 750;
+  text-underline-offset: 4px;
+}
+
+.vrokal-language-source-links a:hover,
+.vrokal-language-source-links a:focus-visible {
+  color: #fff;
+}
+
+.vrokal-language-stat-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.vrokal-language-stat-stack span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+}
+
+.vrokal-language-stat-stack strong {
+  color: #ffe08b;
+  font-size: 20px;
+}
+
+.vrokal-language-detail-heading {
+  max-width: 740px;
+  margin: 0 0 24px;
+}
+
+.vrokal-language-detail-heading h3 {
+  font-size: clamp(25px, 3.5vw, 34px);
+}
+
+.vrokal-language-detail-heading > p:last-child {
+  color: var(--blank-muted);
+  line-height: 1.7;
+}
+
+.vrokal-language-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+
+.vrokal-language-card {
+  display: flex;
+  flex-direction: column;
+  border-top: 4px solid var(--vrokal-violet);
+  background: linear-gradient(150deg, #f0eaff, #fff 82%);
+}
+
+.vrokal-language-card:nth-child(5n + 2) {
+  border-top-color: var(--vrokal-coral);
+  background: linear-gradient(150deg, #fff0e8, #fff 82%);
+}
+
+.vrokal-language-card:nth-child(5n + 3) {
+  border-top-color: var(--vrokal-mint);
+  background: linear-gradient(150deg, #e4f7ee, #fff 82%);
+}
+
+.vrokal-language-card:nth-child(5n + 4) {
+  border-top-color: var(--vrokal-gold);
+  background: linear-gradient(150deg, #fff6d8, #fff 82%);
+}
+
+.vrokal-language-card:nth-child(5n + 5) {
+  border-top-color: var(--blank-primary);
+  background: linear-gradient(150deg, #e9e6ff, #fff 82%);
+}
+
+.vrokal-language-card .vrokal-language-badge {
+  color: var(--blank-primary-dark);
+  line-height: 1.45;
+}
+
+.vrokal-language-card h3 {
+  color: var(--blank-text);
+}
+
+.vrokal-language-card > p strong {
+  color: var(--blank-primary-dark);
+}
+
+.vrokal-language-pros-cons {
+  display: grid;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.vrokal-language-pros-cons > div {
+  padding: 13px 14px;
+  border: 1px solid rgba(115, 89, 207, 0.12);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.vrokal-language-pros-cons > div > strong {
+  color: var(--blank-primary-dark);
+  font-size: 13px;
+}
+
+.vrokal-language-pros-cons ul {
+  display: grid;
+  gap: 5px;
+  margin: 7px 0 0;
+  padding-left: 18px;
+  color: var(--blank-muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+/* Vrokal's colorful violet theme */
+body {
+  background-color: var(--blank-bg);
+  background-image:
+    radial-gradient(ellipse at 8% 10%, rgba(238, 121, 95, 0.22), transparent 28%),
+    radial-gradient(ellipse at 92% 12%, rgba(115, 89, 207, 0.25), transparent 30%),
+    radial-gradient(ellipse at 88% 72%, rgba(120, 183, 164, 0.2), transparent 27%),
+    radial-gradient(ellipse at 12% 88%, rgba(232, 184, 79, 0.16), transparent 25%),
+    repeating-linear-gradient(135deg, rgba(115, 89, 207, 0.035) 0 1px, transparent 1px 28px),
+    linear-gradient(135deg, #f1eaff 0%, #fff4ed 48%, #e9faf5 100%);
+}
+
+.page-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(110deg, var(--blank-primary-dark), var(--vrokal-violet) 62%, #a34fd1);
+  box-shadow: 0 12px 34px rgba(76, 29, 149, 0.2);
+}
+
+.page-header .anvil-role-h1 {
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(36, 23, 63, 0.25);
+}
+
+.page-header a {
+  color: rgba(255, 255, 255, 0.9);
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.page-header a:hover,
+.page-header a:focus,
+.page-header a.is-active {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.vrokal-eyebrow,
+.subtitle,
+.anvil-role-eyebrow {
+  color: var(--blank-primary);
+}
+
+.vrokal-hero {
+  border-color: rgba(115, 89, 207, 0.3);
+  background:
+    radial-gradient(ellipse at 4% 100%, rgba(238, 121, 95, 0.2), transparent 42%),
+    radial-gradient(ellipse at 96% 0%, rgba(120, 183, 164, 0.24), transparent 38%),
+    linear-gradient(125deg, #fff 0%, #eee5ff 52%, #fff0e6 100%);
+  box-shadow: 0 28px 76px rgba(76, 29, 149, 0.17);
+}
+
+.vrokal-hero::before {
+  background: var(--vrokal-coral);
+  opacity: 0.22;
+}
+
+.vrokal-hero-note {
+  border-color: rgba(115, 89, 207, 0.3);
+  background: linear-gradient(145deg, #e9ddff, #ffe8dd 58%, #fff2c9);
+}
+
+.vrokal-note-icon {
+  background: linear-gradient(145deg, var(--vrokal-gold), #ffd77a);
+  box-shadow: 0 8px 20px rgba(150, 103, 20, 0.18);
+}
+
+.vrokal-section.vrokal-story {
+  border-color: rgba(238, 121, 95, 0.28);
+  background: linear-gradient(125deg, #ffe9df, #fff 48%, #e9e0ff);
+}
+
+.vrokal-story-quote {
+  background: linear-gradient(145deg, var(--blank-primary-dark), var(--vrokal-violet) 68%, #a34fd1);
+}
+
+.vrokal-generator-form {
+  border-color: rgba(115, 89, 207, 0.35);
+  background: linear-gradient(145deg, #fff 0%, #f1eaff 68%, #ffece4 100%);
+}
+
+.vrokal-output-wrap {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: linear-gradient(145deg, #251345, #392168 72%, #4c2675);
+  color: #fff;
+  box-shadow: 0 20px 48px rgba(36, 23, 63, 0.24);
+}
+
+.vrokal-output-wrap .vrokal-field-label,
+.vrokal-output-wrap .vrokal-output-heading span,
+.vrokal-output-note {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+textarea.anvil-role-code-output {
+  border-color: rgba(214, 255, 236, 0.36);
+  background: var(--vrokal-code-bg);
+  color: var(--vrokal-code-text);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+textarea.anvil-role-code-output::placeholder {
+  color: #b4a8ca;
+}
+
+.vrokal-generator-form .anvil-button > button,
+.vrokal-cta,
+.vrokal-plan-link {
+  background: linear-gradient(115deg, var(--blank-primary), var(--vrokal-violet) 58%, #a34fd1);
+  box-shadow: 0 9px 22px rgba(115, 89, 207, 0.22);
+}
+
+.vrokal-generator-form .anvil-button > button:hover,
+.vrokal-generator-form .anvil-button > button:focus,
+.vrokal-cta:hover,
+.vrokal-cta:focus,
+.vrokal-plan-link:hover,
+.vrokal-plan-link:focus {
+  background: linear-gradient(115deg, var(--blank-primary-dark), var(--vrokal-violet));
+  box-shadow: 0 12px 26px rgba(76, 29, 149, 0.28);
+}
+
+.vrokal-plan-card:nth-child(1) {
+  border-color: rgba(238, 121, 95, 0.5);
+  background: linear-gradient(150deg, #fff0e8, #fff 78%);
+}
+
+.vrokal-plan-featured {
+  border-color: var(--vrokal-violet);
+  background: linear-gradient(145deg, var(--vrokal-violet), var(--blank-primary-dark));
+  box-shadow: 0 18px 44px rgba(76, 29, 149, 0.24);
+}
+
+.vrokal-plan-featured .vrokal-plan-label,
+.vrokal-plan-featured h3,
+.vrokal-plan-featured > p:not(.vrokal-plan-label),
+.vrokal-plan-featured ul {
+  color: #fff;
+}
+
+.vrokal-plan-featured .vrokal-plan-label {
+  color: #ffe08b;
+}
+
+.vrokal-plan-featured .vrokal-plan-link {
+  background: var(--vrokal-gold);
+  color: var(--blank-primary-dark);
+  box-shadow: none;
+}
+
+.vrokal-plan-featured .vrokal-plan-link:hover,
+.vrokal-plan-featured .vrokal-plan-link:focus {
+  background: #ffe08b;
+}
+
+.vrokal-benefit-card:nth-child(4n + 1) {
+  border-top: 4px solid var(--vrokal-coral);
+  background: linear-gradient(155deg, #ffe6dc, #fff 90%);
+}
+
+.vrokal-benefit-card:nth-child(4n + 2) {
+  border-top: 4px solid var(--vrokal-violet);
+  background: linear-gradient(155deg, #e9ddff, #fff 90%);
+}
+
+.vrokal-benefit-card:nth-child(4n + 3) {
+  border-top: 4px solid var(--vrokal-mint);
+  background: linear-gradient(155deg, #ddf5ec, #fff 90%);
+}
+
+.vrokal-benefit-card:nth-child(4n + 4) {
+  border-top: 4px solid var(--vrokal-gold);
+  background: linear-gradient(155deg, #fff3ce, #fff 90%);
+}
+
+.vrokal-faq-card:nth-child(4n + 1) { background: linear-gradient(125deg, #fff0e8, #fff 75%); }
+.vrokal-faq-card:nth-child(4n + 2) { background: linear-gradient(125deg, #efe8ff, #fff 75%); }
+.vrokal-faq-card:nth-child(4n + 3) { background: linear-gradient(125deg, #e5f8f0, #fff 75%); }
+.vrokal-faq-card:nth-child(4n + 4) { background: linear-gradient(125deg, #fff6d9, #fff 75%); }
+
+.vrokal-language-list span {
+  box-shadow: 0 4px 12px rgba(76, 29, 149, 0.06);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.vrokal-language-list span:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(76, 29, 149, 0.12);
+}
+
+@media (max-width: 980px) {
+  .vrokal-language-detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vrokal-language-popularity {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .vrokal-language-quick-grid,
+  .vrokal-language-detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.vrokal-founder-panel {
+  background: linear-gradient(115deg, #4c1d95, #7359cf 58%, #a34fd1);
+  box-shadow: 0 26px 62px rgba(76, 29, 149, 0.27);
+}
+
+.vrokal-founder-monogram {
+  background: linear-gradient(145deg, #ffe08b, var(--vrokal-gold));
+}
+
+.vrokal-footer {
+  border-top-color: rgba(115, 89, 207, 0.28);
+  color: var(--blank-primary-dark);
+}
+
+.vrokal-footer a {
+  color: var(--blank-primary);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .vrokal-hero,
+  .vrokal-generator-form,
+  .vrokal-output-wrap,
+  .vrokal-plan-card,
+  .vrokal-benefit-card,
+  .vrokal-usecase-card,
+  .vrokal-step-card,
+  .vrokal-faq-card {
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vrokal-wizard-step,
+  .vrokal-wizard-step-number {
+    transition: none;
+  }
+
+  .vrokal-wizard-slide.is-entering-forward,
+  .vrokal-wizard-slide.is-entering-back,
+  .vrokal-wizard-slide.is-exiting-forward,
+  .vrokal-wizard-slide.is-exiting-back {
+    animation: none;
+  }
 }
 
 #payment-contact:target {

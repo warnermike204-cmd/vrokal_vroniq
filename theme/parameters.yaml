@@ -1,24 +1,26 @@
 color_scheme:
   colors:
-  - {color: '#176b87', name: Primary}
-  - {color: '#f7f8fa', name: Background}
+  - {color: '#7c3aed', name: Primary}
+  - {color: '#f5f0ff', name: Background}
   - {color: '#ffffff', name: Surface}
-  - {color: '#1d2430', name: Text}
-  - {color: '#667085', name: Muted}
-  - {color: '#d8dee8', name: Border}
-  - {color: '#0e4254', name: Primary Dark}
-  - {color: 'rgba(23, 107, 135, 0.18)', name: Focus Ring}
-  - {color: '#ffffff', name: Control Background}
-  - {color: '#f9fbfc', name: Control Background Hover}
-  - {color: '#eef2f6', name: Control Disabled}
-  - {color: '#eef5f7', name: Surface Muted}
+  - {color: '#251345', name: Text}
+  - {color: '#655b78', name: Muted}
+  - {color: '#e0d6f5', name: Border}
+  - {color: '#4c1d95', name: Primary Dark}
+  - {color: 'rgba(124, 58, 237, 0.22)', name: Focus Ring}
+  - {color: '#fffbff', name: Control Background}
+  - {color: '#f5eeff', name: Control Background Hover}
+  - {color: '#ede7f6', name: Control Disabled}
+  - {color: '#e8faf5', name: Surface Muted}
   - {color: '#ee795f', name: Coral}
   - {color: '#7359cf', name: Violet}
   - {color: '#e8b84f', name: Gold}
   - {color: '#78b7a4', name: Mint}
-  - {color: '#f1ecff', name: Lavender}
+  - {color: '#e8ddff', name: Lavender}
   - {color: '#fff0e8', name: Peach}
   - {color: '#fff9e8', name: Gold Wash}
+  - {color: '#24173f', name: Code Background}
+  - {color: '#d6ffec', name: Code Text}
 roles:
 - components: [Button]
   name: secondary-button

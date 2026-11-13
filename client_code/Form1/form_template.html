@@ -4,175 +4,984 @@
     <a href="#generator">Generator</a>
     <a href="#projects">Project ideas</a>
     <a href="#process">How it works</a>
+    <a href="#language-guide">Language guide</a>
     <a href="#plans">Plans</a>
     <a href="#founder">Founder</a>
   </anvil-block>
   <anvil-block slot="content">
     <section class="vrokal-hero">
-        <div class="vrokal-hero-copy">
-            <p class="vrokal-eyebrow">IDEAS INTO WORKING CODE</p>
-            <h2>Build your next game or app with Vrokal.</h2>
-            <p class="vrokal-hero-text">Describe a game or app in your own words. Vrokal AI turns the details into tailored code, then helps you improve it through follow-up chat.</p>
-            <a href="#generator" class="vrokal-cta">Try the AI code generator <span aria-hidden="true">↓</span></a>
+      <div class="vrokal-hero-copy">
+        <p class="vrokal-eyebrow">IDEAS INTO WORKING CODE</p>
+        <h2>Build your next game or app with Vrokal.</h2>
+        <p class="vrokal-hero-text">
+          Describe a game or app in your own words. Vrokal AI turns the details
+          into tailored code, then helps you improve it through follow-up chat.
+        </p>
+        <a href="#generator" class="vrokal-cta">Try the AI code generator <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="vrokal-hero-note">
+        <span aria-hidden="true" class="vrokal-note-icon">&lt;/&gt;</span>
+        <p>Every game begins with an idea.</p>
+        <span>Idea → playable draft → your next change</span>
+        <div aria-hidden="true" class="vrokal-story-code">
+          <span><i></i> game = "your idea"</span>
+          <span><i></i> describe_controls()</span>
+          <span><i></i> add_next_feature()</span>
         </div>
-        <div class="vrokal-hero-note">
-            <span aria-hidden="true" class="vrokal-note-icon">&lt;/&gt;</span>
-            <p>Every game begins with an idea.</p>
-            <span>Idea → playable draft → your next change</span>
-            <div aria-hidden="true" class="vrokal-story-code">
-                <span><i></i> game = "your idea"</span>
-                <span><i></i> describe_controls()</span>
-                <span><i></i> add_next_feature()</span>
-            </div>
-        </div>
+      </div>
     </section>
     <div class="vrokal-page">
+      <section id="story" class="vrokal-section vrokal-story">
+        <div class="vrokal-story-narrative">
+          <p class="vrokal-eyebrow">THE VROKAL STORY</p>
+          <h2>From “what if?” to “let’s play.”</h2>
+          <p>
+            Every game begins with a spark: a character, a challenge, a world,
+            or a mechanic you want to try. Then comes the blank page—and the
+            question of how to turn that idea into something playable.
+          </p>
+          <p>
+            Vrokal is designed to help with that first stretch. Describe what
+            the player does, choose a language, and get a code draft shaped
+            around your idea. Then keep talking to the AI: add a level, change
+            the controls, tune the score, or take the project in a new
+            direction.
+          </p>
+          <a href="#generator" class="vrokal-story-link">Start with your idea <span aria-hidden="true">→</span></a>
+        </div>
+        <aside class="vrokal-story-quote">
+          <span aria-hidden="true">✦</span>
+          <blockquote>
+            The first draft is where the adventure begins.
+          </blockquote>
+          <p>Vrokal · A place to start building</p>
+        </aside>
+      </section>
     
-        <section id="story" class="vrokal-section vrokal-story">
-            <div class="vrokal-story-narrative">
-                <p class="vrokal-eyebrow">THE VROKAL STORY</p>
-                <h2>From “what if?” to “let’s play.”</h2>
-                <p>Every game begins with a spark: a character, a challenge, a world, or a mechanic you want to try. Then comes the blank page—and the question of how to turn that idea into something playable.</p>
-                <p>Vrokal is designed to help with that first stretch. Describe what the player does, choose a language, and get a code draft shaped around your idea. Then keep talking to the AI: add a level, change the controls, tune the score, or take the project in a new direction.</p>
-                <a href="#generator" class="vrokal-story-link">Start with your idea <span aria-hidden="true">→</span></a>
+      <section id="generator" class="vrokal-section vrokal-generator">
+        <div class="vrokal-section-heading">
+          <p class="vrokal-eyebrow">VROKAL CODE GENERATOR</p>
+          <h2>Describe it. Get the code.</h2>
+          <p>
+            Describe an app, website, game, or tool. Vrokal AI writes the
+            requested code in the selected language and places it in the code
+            panel.
+          </p>
+        </div>
+        <div class="vrokal-generator-grid">
+          <div class="vrokal-generator-form">
+            <div class="vrokal-wizard-progress" aria-label="Code generator steps">
+              <div class="vrokal-wizard-step is-active" anvil:name="step_marker_language">
+                <span class="vrokal-wizard-step-number">01</span>
+                <span class="vrokal-wizard-step-label">Language</span>
+              </div>
+              <div class="vrokal-wizard-step" anvil:name="step_marker_project">
+                <span class="vrokal-wizard-step-number">02</span>
+                <span class="vrokal-wizard-step-label">Project type</span>
+              </div>
+              <div class="vrokal-wizard-step" anvil:name="step_marker_details">
+                <span class="vrokal-wizard-step-number">03</span>
+                <span class="vrokal-wizard-step-label">Your idea</span>
+              </div>
             </div>
-            <aside class="vrokal-story-quote">
-                <span aria-hidden="true">✦</span>
-                <blockquote>The first draft is where the adventure begins.</blockquote>
-                <p>Vrokal · A place to start building</p>
-            </aside>
-        </section>
-    
-        <section id="generator" class="vrokal-section vrokal-generator">
-            <div class="vrokal-section-heading">
-                <p class="vrokal-eyebrow">VROKAL CODE GENERATOR</p>
-                <h2>Describe it. Get the code.</h2>
-                <p>Describe an app, website, game, or tool. Vrokal AI writes the requested code in the selected language and places it in the code panel.</p>
-            </div>
-            <div class="vrokal-generator-grid">
-                <div class="vrokal-generator-form">
-                    <p class="vrokal-field-label">Programming language</p>
-                    <anvil-component type="DropDown" name="language_dropdown"></anvil-component>
-                    <p class="vrokal-field-label">Project type</p>
-                    <anvil-component type="DropDown" name="project_type_dropdown"></anvil-component>
-                    <p class="vrokal-field-label">Your requests</p>
-                    <div class="vrokal-chat-scroll">
-                        <anvil-component type="RepeatingPanel" name="chat_history_panel" prop:item_template="Minimal_Theme_1.Form1.ChatMessage" prop:role="vrokal-chat-history"></anvil-component>
-                    </div>
-                    <p class="vrokal-field-label">Describe what to build</p>
-                    <anvil-component type="TextArea" name="project_prompt" prop:role="chat-prompt" prop:placeholder="Describe what to build, e.g. Make a Python spaceship game with three lives."></anvil-component>
-                    <div class="vrokal-chat-actions">
-                        <anvil-component type="Button" name="generate_button" prop:text="Generate code"></anvil-component>
-                        <anvil-component type="Button" name="save_response_button" prop:text="Save response" prop:role="secondary-button"></anvil-component>
-                        <anvil-component type="Button" name="new_chat_button" prop:text="New chat" prop:role="secondary-button"></anvil-component>
-                    </div>
-                    <div class="vrokal-generator-status">
-                        <anvil-component type="Label" name="generator_status" prop:text="Describe your idea and Vrokal AI will write a tailored first version."></anvil-component>
-                        <anvil-component type="Timer" name="thinking_timer" prop:interval="0"></anvil-component>
-                    </div>
+
+            <div class="vrokal-wizard-slides">
+              <section class="vrokal-wizard-slide is-active" anvil:name="language_step">
+                <p class="vrokal-wizard-kicker">STEP 1 OF 3</p>
+                <h3>What language do you want to use?</h3>
+                <p class="vrokal-wizard-description">Choose a language for your first code draft. You can come back and change it any time.</p>
+                <p class="vrokal-field-label">Programming language</p>
+                <anvil-component type="DropDown" name="language_dropdown"></anvil-component>
+                <div class="vrokal-wizard-tip"><strong>Quick tip:</strong> Python is a friendly place to start learning code.</div>
+              </section>
+
+              <section class="vrokal-wizard-slide" anvil:name="project_step">
+                <p class="vrokal-wizard-kicker">STEP 2 OF 3</p>
+                <h3>What are you making?</h3>
+                <p class="vrokal-wizard-description">Choose the kind of project so Vrokal can shape its first draft around it.</p>
+                <p class="vrokal-field-label">Project type</p>
+                <anvil-component type="DropDown" name="project_type_dropdown"></anvil-component>
+                <div class="vrokal-wizard-tip">Next, tell Vrokal how your project should look and work.</div>
+              </section>
+
+              <section class="vrokal-wizard-slide" anvil:name="details_step">
+                <p class="vrokal-wizard-kicker">STEP 3 OF 3</p>
+                <h3>Tell Vrokal about your idea</h3>
+                <p class="vrokal-wizard-description">Include the features, controls, style, or rules you want. You can ask for changes after the first draft.</p>
+                <p class="vrokal-field-label">Your requests</p>
+                <div class="vrokal-chat-scroll">
+                  <anvil-component type="RepeatingPanel" name="chat_history_panel" prop:item_template="Minimal_Theme_1.Form1.ChatMessage" prop:role="vrokal-chat-history"></anvil-component>
                 </div>
-                <div class="vrokal-output-wrap">
-                    <div class="vrokal-output-heading">
-                        <p class="vrokal-field-label">Your code</p>
-                        <span>Appears when you ask for code</span>
-                    </div>
-                    <anvil-component type="TextArea" name="code_output" prop:role="code-output" prop:placeholder="Your AI-generated code will appear here"></anvil-component>
-                    <p class="vrokal-output-note">Generated source code appears here. Review the code and install any required tools before running it.</p>
+                <p class="vrokal-field-label">Describe what to build</p>
+                <anvil-component type="TextArea" name="project_prompt" prop:role="chat-prompt" prop:placeholder="For example: Make a Python spaceship game with three lives, moving asteroids, and a score."></anvil-component>
+                <div class="vrokal-chat-actions">
+                  <anvil-component type="Button" name="generate_button" prop:text="Generate code"></anvil-component>
+                  <anvil-component type="Button" name="save_response_button" prop:text="Save response" prop:role="secondary-button"></anvil-component>
+                  <anvil-component type="Button" name="new_chat_button" prop:text="New chat" prop:role="secondary-button"></anvil-component>
                 </div>
+              </section>
             </div>
-        </section>
+
+            <div class="vrokal-wizard-navigation">
+              <div class="vrokal-wizard-back-wrap is-hidden" anvil:name="wizard_back_control">
+                <anvil-component type="Button" name="wizard_back_button" prop:text="Back" prop:role="secondary-button"></anvil-component>
+              </div>
+              <div class="vrokal-wizard-next-wrap" anvil:name="wizard_next_control">
+                <anvil-component type="Button" name="wizard_next_button" prop:text="Continue"></anvil-component>
+              </div>
+            </div>
+
+            <div class="vrokal-generator-status">
+              <anvil-component type="Label" name="generator_status" prop:text="Describe your idea and Vrokal AI will write a tailored first version."></anvil-component>
+              <anvil-component type="Timer" name="thinking_timer" prop:interval="0"></anvil-component>
+              <anvil-component type="Timer" name="slide_transition_timer" prop:interval="0"></anvil-component>
+            </div>
+          </div>
+          <div class="vrokal-output-wrap">
+            <div class="vrokal-output-heading">
+              <p class="vrokal-field-label">Your code</p>
+              <span>Appears when you ask for code</span>
+            </div>
+            <anvil-component type="TextArea" name="code_output" prop:role="code-output" prop:placeholder="Your AI-generated code will appear here"></anvil-component>
+            <p class="vrokal-output-note">
+              Vrokal can make mistakes. Review the code before using it. Larger
+              requests may take longer to generate.
+            </p>
+          </div>
+        </div>
+      </section>
     
-        <section id="projects" class="vrokal-section">
-            <div class="vrokal-section-heading">
-                <p class="vrokal-eyebrow">PROJECT IDEAS</p>
-                <h2>What can you make with Vrokal?</h2>
-                <p>Describe the experience you want. Vrokal AI can create a tailored first draft and help you refine it one request at a time.</p>
-            </div>
-            <div class="vrokal-usecase-grid">
-                <article class="vrokal-usecase-card"><span class="vrokal-card-number">01</span><h3>Arcade games</h3><p>Describe movement, obstacles, scoring, lives, and how to win or restart.</p></article>
-                <article class="vrokal-usecase-card"><span class="vrokal-card-number">02</span><h3>Platform games</h3><p>Plan levels, jumping, collectibles, checkpoints, and character controls.</p></article>
-                <article class="vrokal-usecase-card"><span class="vrokal-card-number">03</span><h3>Puzzle games</h3><p>Turn rules, pieces, hints, and puzzle progression into a code draft.</p></article>
-                <article class="vrokal-usecase-card"><span class="vrokal-card-number">04</span><h3>Websites and portfolios</h3><p>Start a personal site, portfolio, blog, or landing page.</p></article>
-                <article class="vrokal-usecase-card"><span class="vrokal-card-number">05</span><h3>Dashboards and trackers</h3><p>Describe a budget tool, reporting view, habit log, or admin dashboard.</p></article>
-                <article class="vrokal-usecase-card"><span class="vrokal-card-number">06</span><h3>Apps and utilities</h3><p>Build a first draft for a chatbot, script, learning project, or small app.</p></article>
-            </div>
-        </section>
+      <section id="projects" class="vrokal-section">
+        <div class="vrokal-section-heading">
+          <p class="vrokal-eyebrow">PROJECT IDEAS</p>
+          <h2>What can you make with Vrokal?</h2>
+          <p>
+            Describe the experience you want. Vrokal AI can create a tailored
+            first draft and help you refine it one request at a time.
+          </p>
+        </div>
+        <div class="vrokal-usecase-grid">
+          <article class="vrokal-usecase-card">
+            <span class="vrokal-card-number">01</span>
+            <h3>Arcade games</h3>
+            <p>
+              Describe movement, obstacles, scoring, lives, and how to win or
+              restart.
+            </p>
+          </article>
+          <article class="vrokal-usecase-card">
+            <span class="vrokal-card-number">02</span>
+            <h3>Platform games</h3>
+            <p>
+              Plan levels, jumping, collectibles, checkpoints, and character
+              controls.
+            </p>
+          </article>
+          <article class="vrokal-usecase-card">
+            <span class="vrokal-card-number">03</span>
+            <h3>Puzzle games</h3>
+            <p>
+              Turn rules, pieces, hints, and puzzle progression into a code
+              draft.
+            </p>
+          </article>
+          <article class="vrokal-usecase-card">
+            <span class="vrokal-card-number">04</span>
+            <h3>Websites and portfolios</h3>
+            <p>Start a personal site, portfolio, blog, or landing page.</p>
+          </article>
+          <article class="vrokal-usecase-card">
+            <span class="vrokal-card-number">05</span>
+            <h3>Dashboards and trackers</h3>
+            <p>
+              Describe a budget tool, reporting view, habit log, or admin
+              dashboard.
+            </p>
+          </article>
+          <article class="vrokal-usecase-card">
+            <span class="vrokal-card-number">06</span>
+            <h3>Apps and utilities</h3>
+            <p>
+              Build a first draft for a chatbot, script, learning project, or
+              small app.
+            </p>
+          </article>
+        </div>
+      </section>
     
-        <section id="process" class="vrokal-section vrokal-process">
-            <div class="vrokal-section-heading">
-                <p class="vrokal-eyebrow">HOW IT WORKS</p>
-                <h2>Three steps from idea to code</h2>
-                <p>Start with a description, see your code, and keep shaping the project through chat.</p>
-            </div>
-            <div class="vrokal-steps-grid">
-                <article class="vrokal-step-card"><span>STEP 1</span><h3>Choose your options</h3><p>Select a programming language and the kind of project you want to create.</p></article>
-                <article class="vrokal-step-card"><span>STEP 2</span><h3>Describe the details</h3><p>Explain the goal, controls, features, and behavior you want in your game or app.</p></article>
-                <article class="vrokal-step-card"><span>STEP 3</span><h3>Chat and improve</h3><p>Get a code draft, then ask for changes. The latest code stays in the editor.</p></article>
-            </div>
-        </section>
+      <section id="process" class="vrokal-section vrokal-process">
+        <div class="vrokal-section-heading">
+          <p class="vrokal-eyebrow">HOW IT WORKS</p>
+          <h2>Three steps from idea to code</h2>
+          <p>
+            Start with a description, see your code, and keep shaping the
+            project through chat.
+          </p>
+        </div>
+        <div class="vrokal-steps-grid">
+          <article class="vrokal-step-card">
+            <span>STEP 1</span>
+            <h3>Choose your options</h3>
+            <p>
+              Select a programming language and the kind of project you want to
+              create.
+            </p>
+          </article>
+          <article class="vrokal-step-card">
+            <span>STEP 2</span>
+            <h3>Describe the details</h3>
+            <p>
+              Explain the goal, controls, features, and behavior you want in
+              your game or app.
+            </p>
+          </article>
+          <article class="vrokal-step-card">
+            <span>STEP 3</span>
+            <h3>Chat and improve</h3>
+            <p>
+              Get a code draft, then ask for changes. The latest code stays in
+              the editor.
+            </p>
+          </article>
+        </div>
+      </section>
     
-        <section class="vrokal-section vrokal-languages">
-            <div class="vrokal-section-heading">
-                <p class="vrokal-eyebrow">LANGUAGE OPTIONS</p>
-                <h2>Choose a familiar language</h2>
-                <p>Describe your project in plain words and choose from these 15 languages and formats.</p>
-            </div>
-            <div class="vrokal-language-list">
-                <span>Python</span><span>JavaScript</span><span>TypeScript</span><span>HTML + CSS</span><span>Java</span><span>C#</span><span>C++</span><span>Go</span><span>PHP</span><span>Ruby</span><span>SQL</span><span>Bash</span><span>Rust</span><span>Kotlin</span><span>Swift</span>
-            </div>
-        </section>
+      <section class="vrokal-section vrokal-languages">
+        <div class="vrokal-section-heading">
+          <p class="vrokal-eyebrow">LANGUAGE OPTIONS</p>
+          <h2>Choose a familiar language</h2>
+          <p>
+            Describe your project in plain words and choose from these 15
+            language and web-format options.
+          </p>
+        </div>
+        <div class="vrokal-language-list">
+          <span>Python</span><span>JavaScript</span><span>TypeScript</span><span>HTML + CSS</span><span>Java</span><span>C#</span><span>C++</span><span>Go</span><span>PHP</span><span>Ruby</span><span>SQL</span><span>Bash</span><span>Rust</span><span>Kotlin</span><span>Swift</span>
+        </div>
+        <p class="vrokal-language-guide-link">
+          <a href="#language-guide">Compare them and find the right starting point ↓</a>
+        </p>
+      </section>
     
-        <section id="plans" class="vrokal-section vrokal-plans">
-            <div class="vrokal-section-heading">
-                <p class="vrokal-eyebrow">PRICING</p>
-                <h2>Choose a code plan</h2>
-                <p>Plans are priced in Canadian dollars. Contact the founder to arrange payment.</p>
+      <section id="language-guide" class="vrokal-section vrokal-language-guide">
+        <div class="vrokal-section-heading">
+          <p class="vrokal-eyebrow">THE LANGUAGE FIELD GUIDE</p>
+          <h2>Pick the right tool for your idea</h2>
+          <p>
+            There is no single best language for every project. Start with what
+            you want to build, then weigh the learning curve, available tools,
+            and the kind of work you enjoy.
+          </p>
+        </div>
+      
+        <div class="vrokal-language-quick-grid">
+          <article class="vrokal-language-quick-card">
+            <span>GREAT FIRST STEP</span>
+            <h3>Python</h3>
+            <p>
+              Often a comfortable first general-purpose language because its
+              syntax is readable. A good choice for small games, automation,
+              data projects, and AI prototypes.
+            </p>
+          </article>
+          <article class="vrokal-language-quick-card">
+            <span>BUILD FOR THE WEB</span>
+            <h3>HTML + CSS, then JavaScript</h3>
+            <p>
+              HTML describes page structure, CSS controls its appearance, and
+              JavaScript adds interaction. HTML and CSS are markup and styling
+              languages rather than general-purpose programming languages.
+            </p>
+          </article>
+          <article class="vrokal-language-quick-card">
+            <span>STEEPER LEARNING CURVE</span>
+            <h3>C++ and Rust</h3>
+            <p>
+              Both can be rewarding for high-performance software. They ask you
+              to understand more about memory, types, and how a program is
+              built, so they are usually tougher first choices.
+            </p>
+          </article>
+        </div>
+      
+        <aside class="vrokal-language-popularity">
+          <div>
+            <p class="vrokal-language-popularity-label">
+              A 2026 popularity snapshot
+            </p>
+            <h3>Which language is used the most?</h3>
+            <p>
+              It depends on what is counted. In Stack Overflow’s 2026 survey,
+              JavaScript was the most-used language among respondents: 62.0% of
+              14,099 people who answered the language question said they had
+              done extensive development work with it in the past year. SQL,
+              HTML/CSS, and Python followed closely.
+            </p>
+            <p>
+              GitHub’s 2026 Octoverse report uses monthly contributor counts
+              instead. By that measure, TypeScript ranked first, followed by
+              Python and JavaScript. Survey answers and activity on one
+              code-hosting platform measure different groups, so neither is a
+              universal count of every developer.
+            </p>
+            <div class="vrokal-language-source-links">
+              <a href="https://survey.stackoverflow.co/2026/technology/data/languages" target="_blank" rel="noopener noreferrer">See Stack Overflow survey data ↗</a>
+              <a href="https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/" target="_blank" rel="noopener noreferrer">Read GitHub Octoverse 2026 ↗</a>
             </div>
-            <div class="vrokal-plan-grid">
-                <article class="vrokal-plan-card">
-                    <p class="vrokal-plan-label">QUICK CODE</p><h3>CAD $25</h3>
-                    <p>Fast code delivery for a focused app or website request.</p>
-                    <ul><li>Priority turnaround</li><li>A clear starter for your project</li><li>Useful for focused features and prototypes</li></ul>
-                    <a href="#payment-contact" class="vrokal-plan-link">Choose this plan ↓</a>
-                </article>
-                <article class="vrokal-plan-card vrokal-plan-featured">
-                    <p class="vrokal-plan-label">ADVANCED CODE</p><h3>CAD $50</h3>
-                    <p>Fast, advanced code delivery with an accuracy-focused review.</p>
-                    <ul><li>Priority turnaround</li><li>More detailed implementation</li><li>Extra review for clarity and accuracy</li></ul>
-                    <a href="#payment-contact" class="vrokal-plan-link">Choose this plan ↓</a>
-                </article>
+          </div>
+          <div aria-label="Stack Overflow 2026 survey results" class="vrokal-language-stat-stack">
+            <span><strong>62.0%</strong> JavaScript</span>
+            <span><strong>58.4%</strong> SQL</span>
+            <span><strong>58.2%</strong> HTML/CSS</span>
+            <span><strong>58.0%</strong> Python</span>
+          </div>
+        </aside>
+      
+        <div class="vrokal-language-detail-heading">
+          <p class="vrokal-eyebrow">15 OPTIONS, EXPLAINED</p>
+          <h3>What each one is good at</h3>
+          <p>
+            Ease ratings are general guidance for a new learner; your
+            experience, project, and learning resources can change how difficult
+            a language feels.
+          </p>
+        </div>
+      
+        <div class="vrokal-language-detail-grid">
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">
+              BEGINNER-FRIENDLY · GENERAL PURPOSE
+            </p>
+            <h3>Python</h3>
+            <p>
+              Readable code and a large collection of libraries make Python a
+              flexible starting point.
+            </p>
+            <p>
+              <strong>Best for:</strong> learning, automation, data analysis, AI
+              prototypes, web backends, and small games.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> usually one of the gentler
+              general-purpose options.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Clear, compact syntax</li>
+                  <li>Many learning resources and libraries</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>Can run slower than compiled languages</li>
+                  <li>Project packaging and environments take practice</li>
+                </ul>
+              </div>
             </div>
-            <p id="payment-contact" class="vrokal-payment-note">Payment contact: <a href="tel:+919773652479">+91 9773652479</a>. Automatic checkout and transfers are not configured on this site.</p>
-        </section>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">WEB · WIDELY USED</p>
+            <h3>JavaScript</h3>
+            <p>
+              The main language that makes web pages interactive, and it can
+              also run on servers.
+            </p>
+            <p>
+              <strong>Best for:</strong> websites, browser games, web apps, and
+              server APIs with Node.js.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> easy to start; asynchronous code
+              and browser behavior add new concepts.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Runs in every modern browser</li>
+                  <li>One language can cover both sides of a web app</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>Dynamic behavior can hide some mistakes</li>
+                  <li>Tooling and package choices can feel overwhelming</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">WEB · LARGE PROJECTS</p>
+            <h3>TypeScript</h3>
+            <p>
+              JavaScript with optional static types that help describe the data
+              and values a program expects.
+            </p>
+            <p>
+              <strong>Best for:</strong> larger websites, web applications, and
+              JavaScript projects shared by a team.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> moderate if you know JavaScript;
+              more to learn if both are new.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Finds many mistakes before code runs</li>
+                  <li>Helps with editor hints and refactoring</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>Usually needs a build step</li>
+                  <li>Types and configuration add concepts</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">WEB · VISUAL DESIGN</p>
+            <h3>HTML + CSS</h3>
+            <p>
+              HTML gives a page its content and structure; CSS controls layout,
+              colors, and typography.
+            </p>
+            <p>
+              <strong>Best for:</strong> websites, landing pages, portfolios,
+              and page layouts.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> beginner-friendly for simple
+              pages; responsive layouts take practice.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>See visual results quickly</li>
+                  <li>Essential skills for building websites</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>Does not provide general app logic on its own</li>
+                  <li>Many screen sizes and browsers need attention</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">BACKEND · ANDROID · ENTERPRISE</p>
+            <h3>Java</h3>
+            <p>
+              A long-established, strongly typed language used across backend
+              services and many large organizations.
+            </p>
+            <p>
+              <strong>Best for:</strong> enterprise software, backend services,
+              and Android projects that use Java.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> moderate; types and
+              object-oriented design are important early ideas.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Mature tools and extensive documentation</li>
+                  <li>Runs on the Java Virtual Machine across platforms</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>Can require more setup and code for small tasks</li>
+                  <li>JVM configuration is another thing to learn</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">.NET · GAMES · BUSINESS APPS</p>
+            <h3>C#</h3>
+            <p>
+              A modern, strongly typed language in the .NET ecosystem, with
+              broad tooling and framework support.
+            </p>
+            <p>
+              <strong>Best for:</strong> business apps, web services, Windows
+              software, and games made with Unity.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> moderate, with excellent editor
+              support for new learners.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Useful across web, desktop, and game projects</li>
+                  <li>Strong types and capable development tools</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>.NET and game frameworks take time to explore</li>
+                  <li>Some projects depend on a specific platform or engine</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">PERFORMANCE · GAME ENGINES</p>
+            <h3>C++</h3>
+            <p>
+              A compiled language that offers detailed control over performance
+              and computer resources.
+            </p>
+            <p>
+              <strong>Best for:</strong> game engines, graphics, embedded
+              devices, and performance-sensitive tools.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> steep for beginners, especially
+              when working with memory and builds.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>High performance and fine-grained control</li>
+                  <li>Used in many established engines and systems</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>More complex language and build setup</li>
+                  <li>Memory and pointer mistakes can be difficult to debug</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">CLOUD · BACKEND SERVICES</p>
+            <h3>Go</h3>
+            <p>
+              A compiled language designed for straightforward programs and
+              practical concurrent services.
+            </p>
+            <p>
+              <strong>Best for:</strong> cloud services, command-line tools,
+              APIs, and network software.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> approachable syntax; networking
+              and concurrency need practice.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Small language with quick compile times</li>
+                  <li>Built-in tools for concurrent programs</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>Its strengths are less focused on visual apps</li>
+                  <li>
+                    Some teams may prefer a different style of abstraction
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">WEB BACKEND · WORDPRESS</p>
+            <h3>PHP</h3>
+            <p>
+              A server-side language used to build dynamic websites and many
+              content-management systems.
+            </p>
+            <p>
+              <strong>Best for:</strong> WordPress sites, web backends, and
+              projects using Laravel or similar frameworks.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> approachable for basic web pages;
+              larger apps require framework knowledge.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Widely supported by web hosting</li>
+                  <li>Large web ecosystem and established frameworks</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>Primarily focused on server-side web work</li>
+                  <li>Older codebases can use inconsistent patterns</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">WEB APPS · RAPID PROTOTYPES</p>
+            <h3>Ruby</h3>
+            <p>
+              A readable, expressive language often paired with the Ruby on
+              Rails web framework.
+            </p>
+            <p>
+              <strong>Best for:</strong> web applications, prototypes, and
+              automation scripts.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> often comfortable for beginners;
+              framework conventions add a second layer.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Concise code and a productive web framework</li>
+                  <li>Good for turning an idea into a working prototype</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>
+                    Smaller mainstream ecosystem than JavaScript or Python
+                  </li>
+                  <li>Large Rails projects require learning its conventions</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">DATABASES · REPORTING</p>
+            <h3>SQL</h3>
+            <p>
+              A query language for finding, changing, and summarizing data in
+              relational databases.
+            </p>
+            <p>
+              <strong>Best for:</strong> reports, data analysis, and
+              applications that store structured information.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> basic queries are
+              beginner-friendly; advanced data work takes practice.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Readable way to ask questions of data</li>
+                  <li>A useful skill across many app and analytics roles</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>Database products use slightly different dialects</li>
+                  <li>
+                    SQL alone is not a complete general-purpose app language
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">SHELL · AUTOMATION</p>
+            <h3>Bash</h3>
+            <p>
+              A command-line shell and scripting language commonly available on
+              Linux and macOS systems.
+            </p>
+            <p>
+              <strong>Best for:</strong> automating file tasks, developer
+              workflows, and system commands.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> simple to start; careful quoting
+              and error handling take practice.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Handy for combining existing command-line tools</li>
+                  <li>Already available in many development environments</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>Scripts can become hard to maintain when they grow</li>
+                  <li>
+                    Shell and operating-system differences can surprise you
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">SYSTEMS · SAFETY · PERFORMANCE</p>
+            <h3>Rust</h3>
+            <p>
+              A compiled systems language designed to catch many memory-safety
+              errors before a program runs.
+            </p>
+            <p>
+              <strong>Best for:</strong> command-line tools, systems software,
+              and performance-sensitive services.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> steep at first; ownership and
+              borrowing are central concepts.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Strong compiler checks and high performance</li>
+                  <li>Memory safety without a garbage collector</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>Ownership rules take time to understand</li>
+                  <li>Early projects can require more setup and iteration</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">ANDROID · JVM</p>
+            <h3>Kotlin</h3>
+            <p>
+              A concise, strongly typed language that works well with Java and
+              the Java Virtual Machine.
+            </p>
+            <p>
+              <strong>Best for:</strong> Android apps, JVM backend services, and
+              codebases using Java libraries.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> moderate; familiar Java concepts
+              help, but tooling still matters.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Works with many existing Java libraries</li>
+                  <li>Concise syntax and good Android tooling</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>Build tools and Android setup add complexity</li>
+                  <li>Most useful when its JVM or Android ecosystem fits</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="vrokal-language-card">
+            <p class="vrokal-language-badge">APPLE APPS · IOS · MACOS</p>
+            <h3>Swift</h3>
+            <p>
+              Apple's modern language for building apps across its platforms.
+            </p>
+            <p>
+              <strong>Best for:</strong> iPhone, iPad, Mac, Apple Watch, and
+              Apple TV apps.
+            </p>
+            <p>
+              <strong>Learning curve:</strong> moderate; Swift basics are
+              approachable, while app frameworks take practice.
+            </p>
+            <div class="vrokal-language-pros-cons">
+              <div>
+                <strong>Advantages</strong>
+                <ul>
+                  <li>Designed for modern Apple app development</li>
+                  <li>Strong types and helpful development tools</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Trade-offs</strong>
+                <ul>
+                  <li>Most useful within Apple's platform ecosystem</li>
+                  <li>Building native apps requires Apple development tools</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
     
-        <section id="benefits" class="vrokal-section vrokal-benefits">
-            <div class="vrokal-section-heading"><p class="vrokal-eyebrow">WHY VROKAL</p><h2>A practical partner for your next idea</h2></div>
-            <div class="vrokal-benefit-grid">
-                <article class="vrokal-benefit-card"><span>01</span><h3>Get a tailored start</h3><p>Describe your idea and get code shaped around the features you asked for.</p></article>
-                <article class="vrokal-benefit-card"><span>02</span><h3>Keep refining in chat</h3><p>Ask for changes such as new controls, levels, score rules, or app features.</p></article>
-                <article class="vrokal-benefit-card"><span>03</span><h3>Choose your language</h3><p>Use one of 15 language and web-format options for your project draft.</p></article>
-                <article class="vrokal-benefit-card"><span>04</span><h3>Keep the code editable</h3><p>Review and adjust the generated code in the page before using it in your project.</p></article>
-            </div>
-        </section>
+      <section id="plans" class="vrokal-section vrokal-plans">
+        <div class="vrokal-section-heading">
+          <p class="vrokal-eyebrow">PRICING</p>
+          <h2>Choose a code plan</h2>
+          <p>
+            Plans are priced in Canadian dollars. Contact the founder to arrange
+            payment.
+          </p>
+        </div>
+        <div class="vrokal-plan-grid">
+          <article class="vrokal-plan-card">
+            <p class="vrokal-plan-label">QUICK CODE</p>
+            <h3>CAD $25</h3>
+            <p>Fast code delivery for a focused app or website request.</p>
+            <ul>
+              <li>Priority turnaround</li>
+              <li>A clear starter for your project</li>
+              <li>Useful for focused features and prototypes</li>
+            </ul>
+            <a href="#payment-contact" class="vrokal-plan-link">Choose this plan ↓</a>
+          </article>
+          <article class="vrokal-plan-card vrokal-plan-featured">
+            <p class="vrokal-plan-label">ADVANCED CODE</p>
+            <h3>CAD $50</h3>
+            <p>Fast, advanced code delivery with an accuracy-focused review.</p>
+            <ul>
+              <li>Priority turnaround</li>
+              <li>More detailed implementation</li>
+              <li>Extra review for clarity and accuracy</li>
+            </ul>
+            <a href="#payment-contact" class="vrokal-plan-link">Choose this plan ↓</a>
+          </article>
+        </div>
+        <p id="payment-contact" class="vrokal-payment-note">
+          Payment contact: <a href="tel:+919773652479">+91 9773652479</a>.
+          Automatic checkout and transfers are not configured on this site.
+        </p>
+      </section>
     
-        <section class="vrokal-section vrokal-faq">
-            <div class="vrokal-section-heading"><p class="vrokal-eyebrow">QUESTIONS</p><h2>Frequently asked questions</h2></div>
-            <div class="vrokal-faq-grid">
-                <article class="vrokal-faq-card"><h3>Can Vrokal make game-specific code?</h3><p>Yes. Describe the gameplay, controls, scoring, and other details. The AI uses that brief to make a tailored code draft.</p></article>
-                <article class="vrokal-faq-card"><h3>Can I ask for changes afterward?</h3><p>Yes. Continue the same chat with requests such as “add a pause button” or “make the enemies move faster.”</p></article>
-                <article class="vrokal-faq-card"><h3>Does Vrokal run or test the code?</h3><p>No. The page generates and edits code. Review it, install any required tools, and run it in the environment for your selected language.</p></article>
-                <article class="vrokal-faq-card"><h3>Which languages can I choose?</h3><p>Python, JavaScript, TypeScript, HTML/CSS, Java, C#, C++, Go, PHP, Ruby, SQL, Bash, Rust, Kotlin, and Swift.</p></article>
-            </div>
-        </section>
+      <section id="benefits" class="vrokal-section vrokal-benefits">
+        <div class="vrokal-section-heading">
+          <p class="vrokal-eyebrow">WHY VROKAL</p>
+          <h2>A practical partner for your next idea</h2>
+        </div>
+        <div class="vrokal-benefit-grid">
+          <article class="vrokal-benefit-card">
+            <span>01</span>
+            <h3>Get a tailored start</h3>
+            <p>
+              Describe your idea and get code shaped around the features you
+              asked for.
+            </p>
+          </article>
+          <article class="vrokal-benefit-card">
+            <span>02</span>
+            <h3>Keep refining in chat</h3>
+            <p>
+              Ask for changes such as new controls, levels, score rules, or app
+              features.
+            </p>
+          </article>
+          <article class="vrokal-benefit-card">
+            <span>03</span>
+            <h3>Choose your language</h3>
+            <p>
+              Use one of 15 language and web-format options for your project
+              draft.
+            </p>
+          </article>
+          <article class="vrokal-benefit-card">
+            <span>04</span>
+            <h3>Keep the code editable</h3>
+            <p>
+              Review and adjust the generated code in the page before using it
+              in your project.
+            </p>
+          </article>
+        </div>
+      </section>
     
-        <section id="founder" class="vrokal-section vrokal-founder-section">
-            <div class="vrokal-founder-panel">
-                <div aria-hidden="true" class="vrokal-founder-monogram">JS</div>
-                <div><p class="vrokal-eyebrow">MEET THE FOUNDER</p><h2>Jatassya Singh</h2><p>Founder of Vrokal. Vrokal is built to help people turn a project idea into a clear starting point for coding.</p></div>
-            </div>
-        </section>
+      <section class="vrokal-section vrokal-faq">
+        <div class="vrokal-section-heading">
+          <p class="vrokal-eyebrow">QUESTIONS</p>
+          <h2>Frequently asked questions</h2>
+        </div>
+        <div class="vrokal-faq-grid">
+          <article class="vrokal-faq-card">
+            <h3>Can Vrokal make game-specific code?</h3>
+            <p>
+              Yes. Describe the gameplay, controls, scoring, and other details.
+              The AI uses that brief to make a tailored code draft.
+            </p>
+          </article>
+          <article class="vrokal-faq-card">
+            <h3>Can I ask for changes afterward?</h3>
+            <p>
+              Yes. Continue the same chat with requests such as “add a pause
+              button” or “make the enemies move faster.”
+            </p>
+          </article>
+          <article class="vrokal-faq-card">
+            <h3>Does Vrokal run or test the code?</h3>
+            <p>
+              No. The page generates and edits code. Review it, install any
+              required tools, and run it in the environment for your selected
+              language.
+            </p>
+          </article>
+          <article class="vrokal-faq-card">
+            <h3>Which languages can I choose?</h3>
+            <p>
+              Python, JavaScript, TypeScript, HTML/CSS, Java, C#, C++, Go, PHP,
+              Ruby, SQL, Bash, Rust, Kotlin, and Swift.
+            </p>
+          </article>
+        </div>
+      </section>
     
-        <footer class="vrokal-footer"><span>Vrokal · Founded by Jatassya Singh</span><a href="#generator">Back to generator ↑</a></footer>
+      <section id="founder" class="vrokal-section vrokal-founder-section">
+        <div class="vrokal-founder-panel">
+          <div class="vrokal-founder-copy">
+            <p class="vrokal-eyebrow">MEET THE STUDENT FOUNDER</p>
+            <h2>Jatassya Singh</h2>
+            <p>
+              Hi, I'm Jatassya, a student who loves coding—especially Python and
+              C#. Writing a program from a blank page can be challenging, so I'm
+              learning to make my own code step by step. Vrokal is part of that
+              journey: a place to explore an idea, get a starting point, and keep
+              improving it.
+            </p>
+            <p>
+              Outside coding, I enjoy football, MMA, and video editing. I'm also
+              working on an AI chatbot project inspired by tools like ChatGPT and
+              Claude.
+            </p>
+          </div>
+        </div>
+      </section>
+    
+      <footer class="vrokal-footer">
+        <span>Vrokal · Founded by Jatassya Singh</span><a href="#generator">Back to generator ↑</a>
+      </footer>
     </div>
   </anvil-block>
   <anvil-block slot="title">
